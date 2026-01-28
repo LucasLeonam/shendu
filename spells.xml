@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spells>
+
+	<!-- Basic Spells -->
+	<instant group="healing" spellid="900" name="Shosen no Jutsu" words="shosen" level="0" mana="20" aggressive="0" selftarget="1" cooldown="2000" groupcooldown="2000" needlearn="0" script="basic/shosen_jutsu.lua"/>
+	<instant group="support" spellid="901" name="Ninja Hashiri" words="hashiru" level="0" mana="30" aggressive="0" selftarget="1" cooldown="4000" groupcooldown="4000" needlearn="0" script="basic/hashiru_jutsu.lua"/>
+	<instant group="attack" spellid="902" name="Kogeki no Jutsu" words="kogeki" level="0" mana="20" needweapon="1" direction="1" cooldown="4000" groupcooldown="2000" needlearn="0" script="basic/kogeki_jutsu.lua"/>
+	<instant group="attack" spellid="903" name="Shuriken Nage" words="kyudan" level="0" mana="25" range="7" needtarget="1" cooldown="2000" groupcooldown="2000" blockwalls="1" needlearn="0" script="basic/shuriken_nage.lua"/>
+		
+	<!-- Sasuke Spells -->
+	<instant group="attack" spellid="904" name="Katon Goukakyuu" words="Katon Goukakyuu" level="8" mana="30" direction="1" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/sasuke/katon_goukakyuu.lua"/>
+	<instant group ="attack" spellid="905" name="Chidori" words="chidori" lvl="40" mana="150" premium="0" aggressive="1" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/sasuke/chidori.lua"/>
+	<instant group="support" spellid="908" name="Sharingan" words="sharingan" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/sasuke/sharingan.lua"/>
+	<instant group ="attack" spellid="906" name="Kirin" words="kirin" lvl="120" mana="500" range="6" needtarget="1" premium="0" aggressive="1" cooldown="30000" groupcooldown="0" needlearn="1" script="ways/sasuke/kirin.lua"/>
+	<instant group ="attack" spellid="907" name="Amaterasu" words="amaterasu" lvl="150" mana="1000" range="7" needtarget="1" premium="0" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/sasuke/amaterasu.lua"/>
+	<instant group="attack" spellid="908" name="Chidori Nagashi" words="chidori nagashi" level="0" mana="150" premium="0" needweapon="1" cooldown="10000" groupcooldown="0" needlearn="1" script="ways/sasuke/chidori_nagashi.lua"/>
+	<!-- Naruto Spells -->
+	<instant spellid="909" name="Kage Bunshin" words="kage bunshin" lvl="8" mana="0" premium="0" cooldown="2000" needlearn="0" script="ways/naruto/kage_bunshin.lua"/>
+	<instant group ="attack" spellid="910" name="Rasengan" words="rasengan" lvl="40" mana="150" premium="0" aggressive="1" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/naruto/rasengan.lua"/>
+	<instant group="support" spellid="911" name="Kurama" words="kurama" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/naruto/kurama.lua"/>
+	<instant group="attack" spellid="913" name="Fuuton Shuriken" words="fuutonshuriken" level="120" mana="25" range="7" needtarget="1" cooldown="40000" groupcooldown="2000" blockwalls="1" needlearn="1" script="ways/naruto/fuutonshuriken.lua"/>
+	<instant group ="attack" spellid="914" name="Rasenshuriken" words="rasenshuriken" lvl="150" mana="150" premium="0" needtarget="1" aggressive="1" cooldown="10000" groupcooldown="0" needlearn="1" script="ways/naruto/rasenshuriken.lua"/>
+	<instant group="attack" spellid="915" name="Sexy Jutsu" words="sexy jutsu" level="0" mana="350" premium="0" needweapon="1" cooldown="15000" groupcooldown="0" needlearn="1" script="ways/naruto/sexy_jutsu.lua"/>
+	<!-- Sakura Spells -->
+	<instant group="attack" spellid="916" name="Shanaroo" words="shanaroo" level="8" mana="30" direction="1" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/sakura/shanaroo.lua"/>
+	<instant group ="attack" spellid="917" name="Shousen no Jutsu" words="shousen" lvl="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/sakura/shousen_jutsu.lua"/>
+	<instant group="support" spellid="918" name="Souzou Saisei" words="Souzou Saisei" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/sakura/souzou_saisei.lua"/>
+	<instant group ="attack" spellid="919" name="Sakuraichi" words="sakuraichi" lvl="0" mana="120" direction="1" needtarget="0" premium="0" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/sakura/sakuraichi.lua"/>
+	<instant group ="attack" spellid="920" name="Okasho" words="okasho" lvl="150" mana="1000" range="7" needtarget="0" premium="0" aggressive="1" cooldown="650000" groupcooldown="0" needlearn="1" script="ways/sakura/okasho.lua"/>
+	<instant group="attack" spellid="921" name="Seiketsu" words="seiketsu" level="0" mana="350" premium="0" needweapon="1" needtarget="1" cooldown="15000" groupcooldown="0" needlearn="1" script="ways/sakura/seiketsu.lua"/> 
+
+	<!-- House Spells -->
+	<instant name="Edit Door" words="aleta grav" aggressive="0" script="house/edit_door.lua" />
+	<instant name="Invite Guests" words="aleta sio" aggressive="0" script="house/invite_guests.lua" />
+	<instant name="Kick Guest" words="alana sio" aggressive="0" playernameparam="1" params="1" script="house/kick_guest.lua" />
+	<instant name="Invite Subowners" words="aleta som" aggressive="0" script="house/invite_subowners.lua" />
+
+	<!-- Monster Spells -->
+	<instant name="Shurikens" words="###1" aggressive="1" blockwalls="1" needtarget="1" needlearn="1" script="monster/shurikens.lua" />
+
+
+
+
+	</spells>
