@@ -5,7 +5,7 @@ NpcSystem.parseParameters(npcHandler)
 local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Nenhum jutsu
+-- Storage = 0: Aprendeu Kage Bunshin no Jutsu (ao se tornar Uzumaki)
 -- Storage >= 1: Aprendeu Naruto Rendan (lvl 50)
 -- Storage >= 2: Aprendeu Kyuubi no Chakra (lvl 80)
 -- Storage >= 3: Aprendeu Oodama Rasengan (lvl 100 + graduated)

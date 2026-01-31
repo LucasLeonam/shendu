@@ -5,7 +5,7 @@ NpcSystem.parseParameters(npcHandler)
 local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Nenhum jutsu
+-- Storage = 0: Aprendeu Katon Goukakyuu (ao se tornar Uchiha)
 -- Storage >= 1: Aprendeu Chidori (lvl 50)
 -- Storage >= 2: Aprendeu Sharingan (lvl 80)
 -- Storage >= 3: Aprendeu Kirin (lvl 100 + graduated)

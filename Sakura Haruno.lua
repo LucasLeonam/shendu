@@ -5,7 +5,7 @@ NpcSystem.parseParameters(npcHandler)
 local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Nenhum jutsu
+-- Storage = 0: Aprendeu Shannaro (ao se tornar Haruno)
 -- Storage >= 1: Aprendeu Ninpou Souzou Saisei (lvl 50)
 -- Storage >= 2: Aprendeu Shousen Jutsu (lvl 80)
 -- Storage >= 3: Aprendeu Sakuraichi (lvl 100 + graduated)
