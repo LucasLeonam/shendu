@@ -6,10 +6,10 @@ local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
 -- Storage = 0: Nenhum jutsu
--- Storage >= 1: Aprendeu Chidori
--- Storage >= 2: Aprendeu Sharingan
--- Storage >= 3: Aprendeu Kirin
--- Storage >= 4: Aprendeu Amaterasu
+-- Storage >= 1: Aprendeu Chidori (lvl 50)
+-- Storage >= 2: Aprendeu Sharingan (lvl 80)
+-- Storage >= 3: Aprendeu Kirin (lvl 100 + graduated)
+-- Storage >= 4: Aprendeu Amaterasu (lvl 120 + Mangekyou)
 local UCHIHA_JUTSU_STORAGE = 70002
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -20,20 +20,20 @@ function onThink()                          npcHandler:onThink()                
 local messages = {
     ["en"] = {
         help = "Hello |PLAYERNAME|. My name is Fugaku Uchiha, and I assist ninjas of the {Uchiha} clan. Do you need anything from me?",
-        noLvl = "Sorry, but you're too weak to join Uchiha clan. Talk to me again when you're at least level 5.",
+        noLvl = "Sorry, but you're too weak to join Uchiha clan. Talk to me again when you're at least {level 5}.",
         askUchiha = "Ah, so you want to {become} a Uchiha, hm? Do you really think you got what it takes?",
         confirm = "I see you are very determined about this. There will be no second chances. You really want to {join} the powerful Uchiha clan?",
         done = "So be it! You are now an Uchiha! Train hard and come speak to me again. When the time comes, I will tell you more details. I will also teach you a powerful fire spell named {Katon Goukakyuu}. Try using it when you have the chance.",
         isUchiha = "Hello |PLAYERNAME|, what {brings} you here?",
         hasOtherClan = "You already belong to another clan. I cannot assist you.",
 
-        noLvlQuest1 = "You need to be at least level 50 to start learning from me.",
+        noLvlQuest1 = "You need to be at least {level 50} to start learning from me.",
         quest1 = "I see that you have grown stronger. It's time to teach you a powerful skill named {Chidori}. This skill uses the raiton element to create a strong lightning in your hand. Are you ready to {learn Chidori}?",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Chidori.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Chidori.",
-        quest1Done = "I never had a doubt that you would suceed. Use your new jutsu wisely, and show the world the power of the Uchiha clan.",
+        quest1Done = "I never had a doubt that you would succeed. Use your new jutsu wisely, and show the world the power of the Uchiha clan.",
 
-        noLvlQuest2 = "I know you are excited to learn new jutsus, but you need to be at least level 80 to survive my training. Come back when you are stronger.",
+        noLvlQuest2 = "I know you are excited to learn new jutsus, but you need to be at least {level 80} to survive my training. Come back when you are stronger.",
         quest2 = "You have proven yourself worthy. I can feel the power in you. I think it's time for me to teach you a powerful ocular skill named {Sharingan}. Are you ready to take the next step and {learn Sharingan}?",
         quest2Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Sharingan.",
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Sharingan.",
@@ -49,7 +49,7 @@ local messages = {
         quest4 = "So, you have done it... You have awakened your Mangekyou Sharingan. Impressive. Very well, I will teach you the ultimate Uchiha jutsu named {Amaterasu}. Are you ready to control the black flames that burn anything in their path? Are you ready to {learn Amaterasu}?",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Amaterasu.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Amaterasu.",
-        quest4Done = "You've done it. I didn't think you had it in you, but you actually did it. I will teach you Amaterasu now, but remember that such power can be a double-edged sword. Maybe one day you will understand its true meaning. Now go fourth and show the world the might of the Uchiha clan!",
+        quest4Done = "You've done it. I didn't think you had it in you, but you actually did it. I will teach you Amaterasu now, but remember that such power can be a double-edged sword. Maybe one day you will understand its true meaning. Now go forth and show the world the might of the Uchiha clan!",
         
         alreadyLearnedChidori = "You have already learned Chidori from me.",
         alreadyLearnedSharingan = "You have already learned Sharingan from me.",
@@ -60,20 +60,20 @@ local messages = {
 
     ["pt"] = {
         help = "Olá |PLAYERNAME|. Eu sou Fugaku Uchiha e auxilio os ninjas do clã {Uchiha}. Você precisa de algo comigo?",
-        noLvl = "Desculpe, mas você é muito fraco para entrar no clã Uchiha. Fale comigo novamente quando tiver pelo menos level 5.",
+        noLvl = "Desculpe, mas você é muito fraco para entrar no clã Uchiha. Fale comigo novamente quando tiver pelo menos {level 5}.",
         askUchiha = "Ah, então você quer se {tornar} um Uchiha, é? Você realmente acha que tem o que é preciso?",
         confirm = "Vejo que você está determinado a isso. Não haverá segunda chance. Você realmente quer {fazer parte} do poderoso clã Uchiha?",
         done = "Assim seja! Você agora é um Uchiha! Treine duro e venha falar comigo novamente. Quando chegar a hora, contarei mais detalhes. Também vou te ensinar um poderoso jutsu de fogo chamado {Katon Goukakyuu}. Tente usar quando tiver a chance.",        
         isUchiha = "Olá |PLAYERNAME|, o que te {traz} aqui?",
         hasOtherClan = "Você já pertence a outro clã. Não posso te auxiliar.",
 
-        noLvlQuest1 = "Você precisa ser pelo menos level 50 para começar a aprender comigo.",
+        noLvlQuest1 = "Você precisa ser pelo menos {level 50} para começar a aprender comigo.",
         quest1 = "Vejo que você ficou mais forte. É hora de te ensinar uma habilidade poderosa chamada {Chidori}. Esta habilidade usa o elemento raiton para criar um poderoso raio em sua mão. Você está pronto para {aprender Chidori}?",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Chidori.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Chidori.",
         quest1Done = "Eu nunca duvidei que você conseguiria. Use seu novo jutsu com sabedoria e mostre ao mundo o poder do clã Uchiha.",
 
-        noLvlQuest2 = "Eu sei que você está animado para aprender novos jutsus, mas você precisa ter pelo menos level 80 para sobreviver ao meu treinamento. Volte quando ficar mais forte.",
+        noLvlQuest2 = "Eu sei que você está animado para aprender novos jutsus, mas você precisa ter pelo menos {level 80} para sobreviver ao meu treinamento. Volte quando ficar mais forte.",
         quest2 = "Você se provou digno. Posso sentir o poder em você. Acho que é hora de eu te ensinar uma poderosa habilidade ocular chamada {Sharingan}. Você está pronto para dar o próximo passo e {aprender Sharingan}?",
         quest2Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Sharingan.",
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Sharingan.",
