@@ -6,7 +6,7 @@ local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
 -- Storage = 0: Aprendeu Kage Bunshin no Jutsu (ao se tornar Uzumaki)
--- Storage >= 1: Aprendeu Naruto Rendan (lvl 50)
+-- Storage >= 1: Aprendeu Naruto Rendan (lvl 40)
 -- Storage >= 2: Aprendeu Kyuubi no Chakra (lvl 80)
 -- Storage >= 3: Aprendeu Oodama Rasengan (lvl 100 + graduated)
 -- Storage >= 4: Aprendeu Rasenshuriken (lvl 120 + graduated)
@@ -27,7 +27,7 @@ local messages = {
         isNaruto = "Hello |PLAYERNAME|, what {brings} you here?",
         hasOtherClan = "You already belong to another clan. I cannot assist you.",
 
-        noLvlQuest1 = "Hey |PLAYERNAME|! Sorry but I can't teach you anything right now. Can you come back to me when you're at least {level 50}? Nice! I'll wait for you!",
+        noLvlQuest1 = "Hey |PLAYERNAME|! Sorry but I can't teach you anything right now. Can you come back to me when you're at least {level 40}? Nice! I'll wait for you!",
         quest1 = "Hey hey! You got stronger, right? Now I can teach you a jutsu named {Naruto Rendan}, a jutsu that uses Kage Bunshin to deliver a barrage of attacks at your opponent. Are you ready to {learn Naruto Rendan}?",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Naruto Rendan.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Naruto Rendan.",
@@ -67,7 +67,7 @@ local messages = {
         isNaruto = "Olá |PLAYERNAME|, o que te {traz} aqui?",
         hasOtherClan = "Você já pertence a outro clã. Não posso te ajudar.",
 
-        noLvlQuest1 = "Hey |PLAYERNAME|! Desculpe, mas não posso te ensinar nada agora. Pode voltar para mim quando você estiver pelo menos no {level 50}? Beleza! Estarei te esperando!",
+        noLvlQuest1 = "Hey |PLAYERNAME|! Desculpe, mas não posso te ensinar nada agora. Pode voltar para mim quando você estiver pelo menos no {level 40}? Beleza! Estarei te esperando!",
         quest1 = "Opa! Você ficou mais forte, né? Agora eu posso te ensinar um jutsu chamado {Naruto Rendan}, um jutsu que usa Kage Bunshin para desferir um monte de ataques no seu oponente. Você está pronto para {aprender Naruto Rendan}?",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Naruto Rendan.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Naruto Rendan.",
@@ -188,7 +188,7 @@ local function creatureSayCallback(cid, type, msg)
         
         -- Determinar qual é o próximo jutsu baseado no storage
         if narutoJutsu == 0 then
-            if player:getLevel() < 50 then
+            if player:getLevel() < 40 then
                 npcHandler:say(messages[currentLang].noLvlQuest1, cid)
             else
                 npcHandler:say(messages[currentLang].quest1, cid)

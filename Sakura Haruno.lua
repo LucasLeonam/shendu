@@ -6,7 +6,7 @@ local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
 -- Storage = 0: Aprendeu Shannaro (ao se tornar Haruno)
--- Storage >= 1: Aprendeu Ninpou Souzou Saisei (lvl 50)
+-- Storage >= 1: Aprendeu Ninpou Souzou Saisei (lvl 40)
 -- Storage >= 2: Aprendeu Shousen Jutsu (lvl 80)
 -- Storage >= 3: Aprendeu Sakuraichi (lvl 100 + graduated)
 -- Storage >= 4: Aprendeu Okasho (lvl 120 + graduated)
@@ -27,7 +27,7 @@ local messages = {
         isHaruno = "Hello |PLAYERNAME|, what {brings} you here?",
         hasOtherClan = "You already belong to another clan. I cannot assist you.",
 
-        noLvlQuest1 = "Hey |PLAYERNAME|! I don't know how to say this, but I kinda can't teach you right now. Return to me when you are at least {level 50} and I can teach you something nice!",
+        noLvlQuest1 = "Hey |PLAYERNAME|! I don't know how to say this, but I kinda can't teach you right now. Return to me when you are at least {level 40} and I can teach you something nice!",
         quest1 = "Oh! You've got stronger, I can see it. Now I can finally teach you {Ninpou Souzou Saisei}, a jutsu that constantly recovers you while you're fighting. Are you ready to {learn Ninpou Souzou Saisei}?",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Ninpou Souzou Saisei.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Ninpou Souzou Saisei.",
@@ -67,7 +67,7 @@ local messages = {
         isHaruno = "Olá |PLAYERNAME|, o que {traz} você aqui?",
         hasOtherClan = "Você já pertence a outro clã. Não posso te ajudar.",
 
-        noLvlQuest1 = "Hey |PLAYERNAME|! Não sei como dizer isso, mas meio que não posso te ensinar agora. Volte para mim quando estiver pelo menos no {level 50} e eu poderei te ensinar algo legal!",
+        noLvlQuest1 = "Hey |PLAYERNAME|! Não sei como dizer isso, mas meio que não posso te ensinar agora. Volte para mim quando estiver pelo menos no {level 40} e eu poderei te ensinar algo legal!",
         quest1 = "Oh! Você ficou mais forte, eu posso ver isso. Agora finalmente posso te ensinar {Ninpou Souzou Saisei}, um jutsu que te recupera constantemente enquanto você está lutando. Você está pronto para {aprender Ninpou Souzou Saisei}?",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Ninpou Souzou Saisei.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Ninpou Souzou Saisei.",
@@ -188,7 +188,7 @@ local function creatureSayCallback(cid, type, msg)
         
         -- Determinar qual é o próximo jutsu baseado no storage
         if harunoJutsu == 0 then
-            if player:getLevel() < 50 then
+            if player:getLevel() < 40 then
                 npcHandler:say(messages[currentLang].noLvlQuest1, cid)
             else
                 npcHandler:say(messages[currentLang].quest1, cid)

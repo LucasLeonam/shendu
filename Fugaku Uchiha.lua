@@ -6,7 +6,7 @@ local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
 -- Storage = 0: Aprendeu Katon Goukakyuu (ao se tornar Uchiha)
--- Storage >= 1: Aprendeu Chidori (lvl 50)
+-- Storage >= 1: Aprendeu Chidori (lvl 40)
 -- Storage >= 2: Aprendeu Sharingan (lvl 80)
 -- Storage >= 3: Aprendeu Kirin (lvl 100 + graduated)
 -- Storage >= 4: Aprendeu Amaterasu (lvl 120 + Mangekyou)
@@ -27,7 +27,7 @@ local messages = {
         isUchiha = "Hello |PLAYERNAME|, what {brings} you here?",
         hasOtherClan = "You already belong to another clan. I cannot assist you.",
 
-        noLvlQuest1 = "You need to be at least {level 50} to start learning from me.",
+        noLvlQuest1 = "You need to be at least {level 40} to start learning from me.",
         quest1 = "I see that you have grown stronger. It's time to teach you a powerful skill named {Chidori}. This skill uses the raiton element to create a strong lightning in your hand. Are you ready to {learn Chidori}?",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Chidori.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Chidori.",
@@ -67,7 +67,7 @@ local messages = {
         isUchiha = "Olá |PLAYERNAME|, o que te {traz} aqui?",
         hasOtherClan = "Você já pertence a outro clã. Não posso te auxiliar.",
 
-        noLvlQuest1 = "Você precisa ser pelo menos {level 50} para começar a aprender comigo.",
+        noLvlQuest1 = "Você precisa ser pelo menos {level 40} para começar a aprender comigo.",
         quest1 = "Vejo que você ficou mais forte. É hora de te ensinar uma habilidade poderosa chamada {Chidori}. Esta habilidade usa o elemento raiton para criar um poderoso raio em sua mão. Você está pronto para {aprender Chidori}?",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Chidori.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Chidori.",
@@ -188,7 +188,7 @@ local function creatureSayCallback(cid, type, msg)
         
         -- Determinar qual é o próximo jutsu baseado no storage
         if uchihaJutsu == 0 then
-            if player:getLevel() < 50 then
+            if player:getLevel() < 40 then
                 npcHandler:say(messages[currentLang].noLvlQuest1, cid)
             else
                 npcHandler:say(messages[currentLang].quest1, cid)
