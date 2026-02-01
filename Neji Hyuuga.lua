@@ -40,9 +40,9 @@ local messages = {
         quest2Done = "So you survived my training and learned how to use the 8 Tigrams Palm. Impressive indeed. Keep training your technique.",
 
         noLvlQuest3 = "So, you came to me again to learn the secrets of the Hyuuga clan. However, you need to be at least {level 100} and be {graduated}. Come back when you are stronger.",
-        quest3 = "You have done well to reach this point. It's time to teach you an advanced Hyuuga technique. Are you ready to {learn your next technique}?",
-        quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you your next technique.",
-        quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you your next technique.",
+        quest3 = "You have done well to reach this point. It's time to teach you an advanced Hyuuga technique. Are you ready to {learn TBD}?",
+        quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you TBD.",
+        quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you TBD.",
         quest3Done = "Again you have proven yourself in my training. Use your new jutsu wisely.",
 
         noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Hyuuga clan, you need to be at least {level 120} and be {graduated}.",
@@ -80,9 +80,9 @@ local messages = {
         quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar o 8 Tigrams Palm. Impressionante, de fato. Continue treinando sua técnica.",
 
         noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Hyuuga. Entretanto, você precisa ter pelo menos {level 100} e se {graduar}. Volte quando ficar mais forte.",
-        quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar uma técnica avançada do clã. Você está pronto para {aprender sua próxima técnica}?",
-        quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei sua próxima técnica.",
-        quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei sua próxima técnica.",
+        quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar uma técnica avançada do clã. Você está pronto para {aprender TBD}?",
+        quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei TBD.",
+        quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei TBD.",
         quest3Done = "Novamente você se provou em meu treinamento. Use seu novo jutsu com sabedoria.",
 
         noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Hyuuga, você precisa ter pelo menos {level 120} e ser {graduado}.",
@@ -93,15 +93,15 @@ local messages = {
         
         alreadyLearnedByakugan = "Você já aprendeu Byakugan de mim.",
         alreadyLearned8TigramsPalm = "Você já aprendeu 8 Tigrams Palm de mim.",
-        alreadyLearnedTBD = "Você já aprendeu esta técnica de mim.",
+        alreadyLearnedTBD = "Você já aprendeu TBD de mim.",
         alreadyLearned64TigramsPalm = "Você já aprendeu 64 Tigrams Palm de mim.",
         allTechniques = "Você dominou todas as técnicas que posso te ensinar por enquanto. Não tenho mais nada a oferecer.",
     }
 }
 
 local validWords = {
-    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 tigrams palm", "aprender 64 tigrams palm", "aprender proxima tecnica"},
-    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 tigrams palm", "learn 64 tigrams palm", "learn next technique"}
+    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 tigrams palm", "aprender 64 tigrams palm", "aprender TBD"},
+    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 tigrams palm", "learn 64 tigrams palm", "learn TBD"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -284,7 +284,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Learn TBD (lvl 100)
-    if msgcontains(msgLower, "learn next technique") or msgcontains(msgLower, "aprender proxima tecnica") then
+    if msgcontains(msgLower, "learn TBD") or msgcontains(msgLower, "aprender TBD") then
         local hyuugaJutsu = player:getStorageValue(HYUUGA_JUTSU_STORAGE)
         if hyuugaJutsu == -1 then
             hyuugaJutsu = 0

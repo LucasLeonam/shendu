@@ -5,7 +5,7 @@ NpcSystem.parseParameters(npcHandler)
 local lang = {}
 
 -- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Aprendeu Hakkeshou Kaiten (ao se tornar Hyuuga)
+-- Storage = 0: Aprendeu Hakkeshou Kaiten (Ao se tornar Hyuuga)
 -- Storage >= 1: Aprendeu Byakugan (lvl 40)
 -- Storage >= 2: Aprendeu 8 Tigrams Palm (lvl 80)
 -- Storage >= 3: Aprendeu 8 Tigrams Vacuum Palm (lvl 100 + graduated)
