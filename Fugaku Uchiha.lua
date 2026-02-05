@@ -8,8 +8,8 @@ local lang = {}
 -- Storage = 0: Aprendeu Katon Goukakyuu (ao se tornar Uchiha)
 -- Storage >= 1: Aprendeu Chidori (lvl 40)
 -- Storage >= 2: Aprendeu Sharingan (lvl 80)
--- Storage >= 3: Aprendeu Kirin (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Amaterasu (lvl 120 + Mangekyou)
+-- Storage >= 3: Aprendeu Kirin (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu Amaterasu (lvl 150 + Mangekyou)
 local UCHIHA_JUTSU_STORAGE = 70002
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -39,13 +39,13 @@ local messages = {
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Sharingan.",
         quest2Done = "So you survived my training and learned how to use the Sharingan. Impressive indeed. Now train your eyes and some day you might even awaken its full potential.",
 
-        noLvlQuest3 = "So, you came to me again to learn the secrets of the Uchiha clan. However, you need to be at least {level 100} and be {graduated}. If I try to teach this skill to you now, you will surely die, and we both don't want that. Come back when you are stronger.",
+        noLvlQuest3 = "So, you came to me again to learn the secrets of the Uchiha clan. However, you need to be at least {level 120} and be {graduated}. If I try to teach this skill to you now, you will surely die, and we both don't want that. Come back when you are stronger.",
         quest3 = "You have done well to reach this point. I can't remember the last time I saw an Uchiha with so much talent. So, let's teach you the raiton element jutsu named Kirin. Are you ready to control the lightning itself? Are you ready to {learn Kirin}?",
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kirin.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kirin.",
         quest3Done = "Again you have proven yourself in my training, and now thunder bows to your will. Use Kirin wisely, for it is a powerful jutsu that can turn the tide of any battle. I feel that your power will be recognized far and wide.",
 
-        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Uchiha clan, you need to be at least {level 120} and have {awakened your Sharingan to its Mangekyou form}. Hah... I think your best friend will not like what will happen next.",
+        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Uchiha clan, you need to be at least {level 150} and have {awakened your Sharingan to its Mangekyou form}. Hah... I think your best friend will not like what will happen next.",
         quest4 = "So, you have done it... You have awakened your Mangekyou Sharingan. Impressive. Very well, I will teach you the ultimate Uchiha jutsu named Amaterasu. Are you ready to control the black flames that burn anything in their path? Are you ready to {learn Amaterasu}?",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Amaterasu.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Amaterasu.",
@@ -79,13 +79,13 @@ local messages = {
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Sharingan.",
         quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar o Sharingan. Impressionante, de fato. Agora treine seus olhos e talvez um dia você desperte todo o seu potencial.",
 
-        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Uchiha. Entretanto, você precisa ter pelo menos {level 100} e se {graduar}. Se eu tentar te ensinar esta habilidade agora, você com certeza morrerá, e nenhum de nós dois gostaria disso. Volte quando ficar mais forte.",
+        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Uchiha. Entretanto, você precisa ter pelo menos {level 120} e se {graduar}. Se eu tentar te ensinar esta habilidade agora, você com certeza morrerá, e nenhum de nós dois gostaria disso. Volte quando ficar mais forte.",
         quest3 = "Você fez bem em chegar até aqui. Não consigo lembrar da última vez que vi um Uchiha com tanto talento. Então, vamos te ensinar o jutsu do elemento raiton chamado Kirin. Você está pronto para controlar o próprio raio? Você está pronto para {aprender Kirin}?",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kirin.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kirin.",
         quest3Done = "Novamente você se provou em meu treinamento, e agora o trovão se curva à sua vontade. Use o Kirin com sabedoria, pois é um jutsu poderoso que pode mudar o rumo de qualquer batalha.",
 
-        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Uchiha, você precisa ter pelo menos {level 120} e ter {despertado seu Sharingan em sua forma Mangekyou}. Hah... Acho que seu melhor amigo não vai gostar do que irá acontecer.",
+        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Uchiha, você precisa ter pelo menos {level 150} e ter {despertado seu Sharingan em sua forma Mangekyou}. Hah... Acho que seu melhor amigo não vai gostar do que irá acontecer.",
         quest4 = "Então, você conseguiu... Você despertou seu Mangekyou Sharingan. Impressionante. Muito bem, vou te ensinar o jutsu supremo Uchiha chamado Amaterasu. Você está pronto para controlar as chamas negras que queimam qualquer coisa em seu caminho? Você está pronto para {aprender Amaterasu}?",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Amaterasu.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Amaterasu.",

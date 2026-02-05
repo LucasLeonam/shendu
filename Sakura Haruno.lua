@@ -8,8 +8,8 @@ local lang = {}
 -- Storage = 0: Aprendeu Shannaro (ao se tornar Haruno)
 -- Storage >= 1: Aprendeu Ninpou Souzou Saisei (lvl 40)
 -- Storage >= 2: Aprendeu Shousen Jutsu (lvl 80)
--- Storage >= 3: Aprendeu Sakuraichi (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Okasho (lvl 120 + graduated)
+-- Storage >= 3: Aprendeu Sakuraichi (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu Okasho (lvl 150 + graduated)
 local HARUNO_JUTSU_STORAGE = 70003
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -39,13 +39,13 @@ local messages = {
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Shousen Jutsu.",
         quest2Done = "Yes! I'm so proud of you being a part of the Haruno Clan. Now everyone is safer when you're around. But don't worry, I have more techniques to teach you. Let's talk again sometime.",
 
-        noLvlQuest3 = "I know I've told you that I would teach you some new techniques later, but don't you think it's too soon? Those new techniques are meant to be taught to {graduated ninjas} around {level 100}. Let's talk again when you get there, okay? I believe in you!",
+        noLvlQuest3 = "I know I've told you that I would teach you some new techniques later, but don't you think it's too soon? Those new techniques are meant to be taught to {graduated ninjas} around {level 120}. Let's talk again when you get there, okay? I believe in you!",
         quest3 = "Yees! You've become a powerful ninja! A lot of people are talking about you and all the help you've been doing on the battlefield. I think it's time to teach you a technique called Sakuraichi. It's a jutsu that uses cherry blossoms to damage anything in front of you. If you can defeat the enemy before it hurts your teammates, everyone wins, right?",
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Sakuraichi.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Sakuraichi.",
         quest3Done = "Fantastic! More and more you've proven yourself to me and all the Haruno clan. I don't think there's anyone that can defeat you or your teammates in battle. Now there's little that I can teach you, but I really hope you continue growing stronger for the sake of our village.",
 
-        noLvlQuest4 = "Hey |PLAYERNAME|! I see that you're eager to learn from me again, but I don't think you're ready yet. This technique requires more power than you have right now. If you try this now, your arms might break, so... Yeah! Try getting {level 120}. I think that would be sufficient!",
+        noLvlQuest4 = "Hey |PLAYERNAME|! I see that you're eager to learn from me again, but I don't think you're ready yet. This technique requires more power than you have right now. If you try this now, your arms might break, so... Yeah! Try getting {level 150}. I think that would be sufficient!",
         quest4 = "Look at those muscles! Now it's time to teach you Okasho. Again, a jutsu that uses cherry blossoms, but this time, you'll use pure strength too. Are you ready to initiate my training?"
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Okasho.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Okasho.",
@@ -79,13 +79,13 @@ local messages = {
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Shousen Jutsu.",
         quest2Done = "Isso! Estou tão orgulhosa de você por fazer parte do Clã Haruno. Agora todos estão mais seguros quando você está por perto. Mas não se preocupe, tenho mais técnicas para te ensinar. Vamos conversar novamente outra hora.",
 
-        noLvlQuest3 = "Eu sei que te disse que te ensinaria algumas novas técnicas mais tarde, mas você não acha que é cedo demais? Essas novas técnicas são destinadas a serem ensinadas a {ninjas formados} por volta do {level 100}. Vamos conversar novamente quando você chegar lá, ok? Eu acredito em você!",
+        noLvlQuest3 = "Eu sei que te disse que te ensinaria algumas novas técnicas mais tarde, mas você não acha que é cedo demais? Essas novas técnicas são destinadas a serem ensinadas a {ninjas formados} por volta do {level 120}. Vamos conversar novamente quando você chegar lá, ok? Eu acredito em você!",
         quest3 = "Issooo! Você se tornou um ninja poderoso! Muitas pessoas estão falando sobre você e toda a ajuda que você tem dado no campo de batalha. Acho que é hora de te ensinar uma técnica chamada Sakuraichi. É um jutsu que usa flores de cerejeira para infligir dano a qualquer um na sua frente. Se você puder derrotar o inimigo antes que ele machuque seus companheiros, todos ganham, certo?",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Sakuraichi.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Sakuraichi.",
         quest3Done = "Fantástico! Mais e mais você se provou para mim e para todo o clã Haruno. Não acho que haja alguém que possa derrotar você ou seus companheiros em batalha. Agora há pouco que posso te ensinar, mas espero realmente que você continue crescendo mais forte pelo bem da nossa vila.",
 
-        noLvlQuest4 = "Hey |PLAYERNAME|! Vejo que você está ansioso para aprender comigo novamente, mas não acho que você esteja pronto ainda. Esta técnica requer mais poder do que você tem agora. Se você tentar isso agora, seus braços podem quebrar, então... Sim! Tente chegar ao {level 120}. Acho que isso seria suficiente!",
+        noLvlQuest4 = "Hey |PLAYERNAME|! Vejo que você está ansioso para aprender comigo novamente, mas não acho que você esteja pronto ainda. Esta técnica requer mais poder do que você tem agora. Se você tentar isso agora, seus braços podem quebrar, então... Sim! Tente chegar ao {level 150}. Acho que isso seria suficiente!",
         quest4 = "Olha só esses músculos! Agora é hora de te ensinar Okasho. Novamente, um jutsu que usa flores de cerejeira, mas desta vez, você também usará força pura. Você está pronto para iniciar meu treinamento?",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Okasho.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Okasho.",

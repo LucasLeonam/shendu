@@ -8,8 +8,8 @@ local lang = {}
 -- Storage = 0: Aprendeu Kage Bunshin no Jutsu (ao se tornar Uzumaki)
 -- Storage >= 1: Aprendeu Naruto Rendan (lvl 40)
 -- Storage >= 2: Aprendeu Kyuubi no Chakra (lvl 80)
--- Storage >= 3: Aprendeu Oodama Rasengan (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Rasenshuriken (lvl 120 + graduated)
+-- Storage >= 3: Aprendeu Oodama Rasengan (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu Rasenshuriken (lvl 150 + graduated)
 local NARUTO_JUTSU_STORAGE = 70004
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -39,13 +39,13 @@ local messages = {
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kyuubi no Chakra.",
         quest2Done = "Such talent! If turning into a Hokage was done using electronic urns, I could consider voting for you! Now I doubt anything would be a problem for you! Let's continue training and getting stronger!",
 
-        noLvlQuest3 = "See, I know I told you to get stronger so I can teach you more techniques, but see, you need to be like, a LOT STRONGER! {Level 100} and {graduated} is enough for the next jutsu, ok? Don't worry, I'll be right here waiting for you!",
+        noLvlQuest3 = "See, I know I told you to get stronger so I can teach you more techniques, but see, you need to be like, a LOT STRONGER! {level 120} and {graduated} is enough for the next jutsu, ok? Don't worry, I'll be right here waiting for you!",
         quest3 = "NOW THIS IS WHAT I TALKED ABOUT! I can say for sure you are ready to learn Oodama Rasengan from me! This is a powerful technique that materializes your chakra in your palm in a sphere form, but it is like, REALLY BIG! It's not easy to master it, y'know? So, are you ready to {learn Oodama Rasengan}?"
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Oodama Rasengan.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Oodama Rasengan.",
         quest3Done = "Are you sure you aren't like a genius or something? That was not an easy technique, and you still mastered it like it was nothing! But that was the minimum I expect from you! Don't let this get to your head though. Continue training and getting stronger!"
 
-        noLvlQuest4 = "Eager to learn more, hm? I don't mind it at all! I love to see my students getting stronger! I turned into a teacher because of that! BUUUUUUUUT... yeah... You know it, right? I need you to get a bit stronger for this next technique, because boy oh boy, this jutsu will be a BLAST! Let's talk again when you're around {level 120}, kay?",
+        noLvlQuest4 = "Eager to learn more, hm? I don't mind it at all! I love to see my students getting stronger! I turned into a teacher because of that! BUUUUUUUUT... yeah... You know it, right? I need you to get a bit stronger for this next technique, because boy oh boy, this jutsu will be a BLAST! Let's talk again when you're around {level 150}, kay?",
         quest4 = "So there's our (maybe) future Hokage! I see that you're confident, and I definitely sensed your chakra when you entered the village. You are now ready to learn Rasenshuriken! This is like Oodama Rasengan, but smaller... AND MUCH STRONGER! Confused, right? It's because this jutsu has an element embedded in it, turning it extremely destructive AND hard to control. But I'm sure you can handle it! Ready to {learn Rasenshuriken}?",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Rasenshuriken.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Rasenshuriken.",
@@ -79,13 +79,13 @@ local messages = {
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kyuubi no Chakra.",
         quest2Done = "Quanto talento! Se virar Hokage fosse feito usando urnas eletrônicas, eu poderia considerar votar em você! Agora eu duvido que algo seria um problema para você! Vamos continuar treinando e ficando mais fortes!",
 
-        noLvlQuest3 = "Olha só, eu sei que te disse para ficar mais forte para que eu possa te ensinar mais técnicas, mas veja, você precisa ser MUITO MAIS FORTE! {Level 100} e ser {graduado} é suficiente para o próximo jutsu, ok? Não se preocupe, estarei bem aqui te esperando!",
+        noLvlQuest3 = "Olha só, eu sei que te disse para ficar mais forte para que eu possa te ensinar mais técnicas, mas veja, você precisa ser MUITO MAIS FORTE! {level 120} e ser {graduado} é suficiente para o próximo jutsu, ok? Não se preocupe, estarei bem aqui te esperando!",
         quest3 = "AGORA SIM! É DISSO QUE EU ESTAVA FALANDO! Posso dizer com certeza que você está pronto para aprender Oodama Rasengan comigo! Esta é uma técnica que materializa seu chakra na palma da sua mão em forma de esfera, mas é tipo, REALMENTE GRANDE! Não é fácil dominá-la, sabe? Então, você está pronto para {aprender Oodama Rasengan}?",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Oodama Rasengan.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Oodama Rasengan.",
         quest3Done = "Você tem certeza de que não é algum tipo de gênio ou algo assim? Essa não foi uma técnica fácil, e você ainda assim a dominou como se não fosse nada! Mas esse foi o mínimo que eu esperava de você! Não deixe isso subir à cabeça, ok? Continue treinando e ficando mais forte!",
 
-        noLvlQuest4 = "Sempre querendo aprender mais, em? Eu não me importo nem um pouco! Adoro ver meus alunos ficando mais fortes! Eu me tornei um professor por causa disso! MAAAAAAS... sim... Você sabe, certo? Preciso que você fique um pouco mais forte para essa próxima técnica, porque rapaz, esse jutsu vai ser uma EXPLOSÃO! Vamos conversar novamente quando você estiver por volta do {level 120}, beleza?",
+        noLvlQuest4 = "Sempre querendo aprender mais, em? Eu não me importo nem um pouco! Adoro ver meus alunos ficando mais fortes! Eu me tornei um professor por causa disso! MAAAAAAS... sim... Você sabe, certo? Preciso que você fique um pouco mais forte para essa próxima técnica, porque rapaz, esse jutsu vai ser uma EXPLOSÃO! Vamos conversar novamente quando você estiver por volta do {level 150}, beleza?",
         quest4 = "Então aqui está nosso (talvez) futuro Hokage! Vejo que você está confiante, e definitivamente senti seu chakra quando você entrou na vila. Você agora está pronto para aprender Rasenshuriken! É parecido com o Oodama Rasengan, mas menor... E MUITO MAIS FORTE! Confuso, né? É porque esse jutsu tem um elemento embutido, tornando-o extremamente destrutivo E difícil de controlar. Mas tenho certeza que você pode lidar com isso! Pronto para {aprender Rasenshuriken}?",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Rasenshuriken.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Rasenshuriken.",
