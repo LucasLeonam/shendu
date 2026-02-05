@@ -7,9 +7,9 @@ local lang = {}
 -- Storage único para rastrear jutsus aprendidos
 -- Storage = 0: Aprendeu Hakkeshou Kaiten (Ao se tornar Hyuuga)
 -- Storage >= 1: Aprendeu Byakugan (lvl 40)
--- Storage >= 2: Aprendeu 8 Tigrams Palm (lvl 80)
+-- Storage >= 2: Aprendeu 8 Trigrams Palm (lvl 80)
 -- Storage >= 3: Aprendeu TBD (lvl 120 + graduated)
--- Storage >= 4: Aprendeu 64 Tigrams Palm (lvl 150 + graduated)
+-- Storage >= 4: Aprendeu 64 Trigrams Palm (lvl 150 + graduated)
 local HYUUGA_JUTSU_STORAGE = 70005
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -34,9 +34,9 @@ local messages = {
         quest1Done = "Your eyes reflect your determination. Now nothing can catch you by surprise. Continue training and protecting the main family.",
 
         noLvlQuest2 = "I see. You want to learn from me again. But it is not possible right now. You need more power and control to use the jutsu I want to teach you. Return to me when you're at least {level 80}.",
-        quest2 = "It looks like you now have the right amount of control of your chakra, so I can teach you how to expel chakra from your own tenketsus. This next jutsu uses this exact logic to disable 8 of your opponent's tenketsus. Are you ready to {learn 8 Tigrams Palm}?",
-        quest2Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 8 Tigrams Palm.",
-        quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Tigrams Palm.",
+        quest2 = "It looks like you now have the right amount of control of your chakra, so I can teach you how to expel chakra from your own tenketsus. This next jutsu uses this exact logic to disable 8 of your opponent's tenketsus. Are you ready to {learn 8 Trigrams Palm}?",
+        quest2Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 8 Trigrams Palm.",
+        quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Trigrams Palm.",
         quest2Done = "I see you achieved total control of your tenketsus. Remember that when you hit your opponent's tenketsu, the chakra can't flow through them. Use it to your advantage.",
 
         noLvlQuest3 = "You are eager to learn, is it not? I have heard of your achievements, and the main family is very happy about your contributions, but it's not time to teach you yet. {Level 120} would be fine for now. Return to me when you are ready.",
@@ -46,15 +46,15 @@ local messages = {
         quest3Done = "TBD.",
 
         noLvlQuest4 = "Hello, |PLAYERNAME|. The main family informed me that you are one of our strongest members now and have given me authority to teach you a jutsu that only the main family and some elite members can use. However, I do not think you are strong enough. That said, when you get at least {level 150}, I can teach you something new.",
-        quest4 = "I almost didn't see you getting near me. This only shows that your control over chakra is impressive. There's a technique I'm eager to teach you. This technique allows you to use your Byakugan to hit everyone around you using Tigrams Palm. In this way, you hit 64 tenketsus of your opponents. You can, of course, share these 64 among your enemies. That said, are you ready to {learn 64 Tigrams Palm}?",
-        quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 64 Tigrams Palm.",
-        quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 64 Tigrams Palm.",
+        quest4 = "I almost didn't see you getting near me. This only shows that your control over chakra is impressive. There's a technique I'm eager to teach you. This technique allows you to use your Byakugan to hit everyone around you using Trigrams Palm. In this way, you hit 64 tenketsus of your opponents. You can, of course, share these 64 among your enemies. That said, are you ready to {learn 64 Trigrams Palm}?",
+        quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 64 Trigrams Palm.",
+        quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 64 Trigrams Palm.",
         quest4Done = "Well, that was unexpected, but I'm not surprised. You mastered the head of the main family's jutsu like it was nothing. The strongest clan shows promising members once again. Continue protecting the main family, and never forget your place.",
         
         alreadyLearnedByakugan = "You have already learned Byakugan from me.",
-        alreadyLearned8TigramsPalm = "You have already learned 8 Tigrams Palm from me.",
+        alreadyLearned8TrigramsPalm = "You have already learned 8 Trigrams Palm from me.",
         alreadyLearnedTBD = "You have already learned TBD from me.",
-        alreadyLearned64TigramsPalm = "You have already learned 64 Tigrams Palm from me.",
+        alreadyLearned64TrigramsPalm = "You have already learned 64 Trigrams Palm from me.",
         allTechniques = "You have mastered all the techniques I can teach you for now. There is nothing more for me to offer.",
     },
 
@@ -74,9 +74,9 @@ local messages = {
         quest1Done = "Seus olhos refletem sua determinação. Agora nada vai te pegar de surpresa. Continue treinando e protegendo a família principal.",
 
         noLvlQuest2 = "Entendo. Você quer aprender comigo de novo. Mas isso não é possível agora. Você precisa de mais poder e controle para usar o jutsu que quero te ensinar. Volte quando tiver pelo menos {level 80}.",
-        quest2 = "Parece que agora você tem o controle certo do seu chakra, então posso te ensinar a expelir chakra pelos próprios tenketsus. Este próximo jutsu usa exatamente essa lógica para desativar 8 tenketsus do seu oponente. Você está pronto para {aprender 8 Tigrams Palm}?",
-        quest2Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 8 Tigrams Palm.",
-        quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Tigrams Palm.",
+        quest2 = "Parece que agora você tem o controle certo do seu chakra, então posso te ensinar a expelir chakra pelos próprios tenketsus. Este próximo jutsu usa exatamente essa lógica para desativar 8 tenketsus do seu oponente. Você está pronto para {aprender 8 Trigrams Palm}?",
+        quest2Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 8 Trigrams Palm.",
+        quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Trigrams Palm.",
         quest2Done = "Vejo que você alcançou controle total dos seus tenketsus. Lembre-se de que, quando você atinge o tenketsu do oponente, ele não pode mais usar chakra. Use isso a seu favor.",
 
         noLvlQuest3 = "Você está ansioso para aprender, não é? Ouvi sobre suas conquistas e a família principal está muito satisfeita com suas contribuições, mas ainda não é hora de te ensinar. {Level 120} seria suficiente por enquanto. Volte quando estiver pronto.",
@@ -86,22 +86,22 @@ local messages = {
         quest3Done = "TBD.",
 
         noLvlQuest4 = "Olá, |PLAYERNAME|. A família principal me informou que você é um dos nossos membros mais fortes agora e me deu autorização para te ensinar um jutsu que apenas a família principal e alguns membros de elite podem usar. No entanto, não acho que você seja forte o bastante. Dito isso, quando você tiver pelo menos {level 150}, poderei te ensinar algo novo.",
-        quest4 = "Eu quase não vi você se aproximando de mim. Isso só mostra que seu controle sobre o chakra é impressionante. Há uma técnica que estou ansioso para te ensinar. Essa técnica permite usar seu Byakugan para atingir todos ao seu redor usando Tigrams Palm. Assim, você atinge 64 tenketsus dos seus oponentes. Você pode, claro, dividir esses 64 entre seus inimigos. Dito isso, você está pronto para {aprender 64 Tigrams Palm}?",
-        quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 64 Tigrams Palm.",
-        quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 64 Tigrams Palm.",
+        quest4 = "Eu quase não vi você se aproximando de mim. Isso só mostra que seu controle sobre o chakra é impressionante. Há uma técnica que estou ansioso para te ensinar. Essa técnica permite usar seu Byakugan para atingir todos ao seu redor usando Trigrams Palm. Assim, você atinge 64 tenketsus dos seus oponentes. Você pode, claro, dividir esses 64 entre seus inimigos. Dito isso, você está pronto para {aprender 64 Trigrams Palm}?",
+        quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 64 Trigrams Palm.",
+        quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 64 Trigrams Palm.",
         quest4Done = "Bem, isso foi inesperado, mas não estou surpreso. Você dominou o jutsu do líder da família principal como se não fosse nada. O clã mais forte mostra novamente membros promissores. Continue protegendo a família principal e nunca se esqueça do seu lugar.",
         
         alreadyLearnedByakugan = "Você já aprendeu Byakugan de mim.",
-        alreadyLearned8TigramsPalm = "Você já aprendeu 8 Tigrams Palm de mim.",
+        alreadyLearned8TrigramsPalm = "Você já aprendeu 8 Trigrams Palm de mim.",
         alreadyLearnedTBD = "Você já aprendeu TBD de mim.",
-        alreadyLearned64TigramsPalm = "Você já aprendeu 64 Tigrams Palm de mim.",
+        alreadyLearned64TrigramsPalm = "Você já aprendeu 64 Trigrams Palm de mim.",
         allTechniques = "Você dominou todas as técnicas que posso te ensinar por enquanto. Não tenho mais nada a oferecer.",
     }
 }
 
 local validWords = {
-    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 tigrams palm", "aprender 64 tigrams palm", "aprender TBD"},
-    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 tigrams palm", "learn 64 tigrams palm", "learn TBD"}
+    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 Trigrams palm", "aprender 64 Trigrams palm", "aprender TBD"},
+    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 Trigrams palm", "learn 64 Trigrams palm", "learn TBD"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -252,8 +252,8 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Learn 8 Tigrams Palm
-    if msgcontains(msgLower, "learn 8 tigrams palm") or msgcontains(msgLower, "aprender 8 tigrams palm") then
+    -- Learn 8 Trigrams Palm
+    if msgcontains(msgLower, "learn 8 Trigrams palm") or msgcontains(msgLower, "aprender 8 Trigrams palm") then
         local hyuugaJutsu = player:getStorageValue(HYUUGA_JUTSU_STORAGE)
         if hyuugaJutsu == -1 then
             hyuugaJutsu = 0
@@ -261,7 +261,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         if hyuugaJutsu >= 2 then
-            npcHandler:say(messages[currentLang].alreadyLearned8TigramsPalm, cid)
+            npcHandler:say(messages[currentLang].alreadyLearned8TrigramsPalm, cid)
             npcHandler.topic[cid] = 0
             return true
         end
@@ -273,7 +273,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         player:removeItem(10549, 1)
-        player:learnSpell("8 Tigrams Palm")
+        player:learnSpell("8 Trigrams Palm")
         player:getPosition():sendMagicEffect(478)
         player:setStorageValue(HYUUGA_JUTSU_STORAGE, 2)
         player:save()
@@ -314,8 +314,8 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Learn 64 Tigrams Palm
-    if msgcontains(msgLower, "learn 64 tigrams palm") or msgcontains(msgLower, "aprender 64 tigrams palm") then
+    -- Learn 64 Trigrams Palm
+    if msgcontains(msgLower, "learn 64 Trigrams palm") or msgcontains(msgLower, "aprender 64 Trigrams palm") then
         local hyuugaJutsu = player:getStorageValue(HYUUGA_JUTSU_STORAGE)
         if hyuugaJutsu == -1 then
             hyuugaJutsu = 0
@@ -323,7 +323,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         if hyuugaJutsu >= 4 then
-            npcHandler:say(messages[currentLang].alreadyLearned64TigramsPalm, cid)
+            npcHandler:say(messages[currentLang].alreadyLearned64TrigramsPalm, cid)
             npcHandler.topic[cid] = 0
             return true
         end
@@ -335,7 +335,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         player:removeItem(10549, 1)
-        player:learnSpell("64 Tigrams Palm")
+        player:learnSpell("64 Trigrams Palm")
         player:getPosition():sendMagicEffect(478)
         player:setStorageValue(HYUUGA_JUTSU_STORAGE, 4)
         player:save()

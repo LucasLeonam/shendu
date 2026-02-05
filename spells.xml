@@ -31,14 +31,14 @@
 	<!-- Neji Spells -->
 	<instant group="attack" spellid="40" name="Hakkeshou Kaiten" words="hakkeshou kaiten" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/neji/hakkeshou_kaiten.lua"/>
 	<instant group ="support" spellid="41" name="Byakugan" words="byakugan" level="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/neji/byakugan.lua"/>
-	<instant group="attack" spellid="42" name="8 Tigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/neji/8_tigrams_palm.lua"/>
+	<instant group="attack" spellid="42" name="8 Trigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/neji/8_Trigrams_palm.lua"/>
 	<instant group ="attack" spellid="43" name="TBD" words="TBD" level="120" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/neji/TBD.lua"/>
-	<instant group ="attack" spellid="44" name="64 Tigrams Palm" words="64 trigams palm" level="150" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/neji/64_tigrams_palm.lua"/>
+	<instant group ="attack" spellid="44" name="64 Trigrams Palm" words="64 trigams palm" level="150" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/neji/64_Trigrams_palm.lua"/>
 	<!-- Hinata Spells -->
 	<instant group="attack" spellid="50" name="Hakkeshou Kaiten" words="hakkeshou kaiten" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/hinata/hakkeshou_kaiten.lua"/>
 	<instant group ="support" spellid="51" name="Byakugan" words="byakugan" level="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/hinata/byakugan.lua"/>
-	<instant group="attack" spellid="52" name="8 Tigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/hinata/8_tigrams_palm.lua"/>
-	<instant group ="attack" spellid="53" name="8 Tigrams Vacuum Palm" words="8 trigams vacuum palm" level="120" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/hinata/8_tigrams_vacuum_palm.lua"/>
+	<instant group="attack" spellid="52" name="8 Trigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/hinata/8_Trigrams_palm.lua"/>
+	<instant group ="attack" spellid="53" name="8 Trigrams Vacuum Palm" words="8 trigams vacuum palm" level="120" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/hinata/8_Trigrams_vacuum_palm.lua"/>
 	<instant group ="attack" spellid="54" name="Twin Lion Palm" words="twin lion palm" level="150" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/hinata/twin_lion_palm.lua"/>
 	<!-- Shikamaru Spells -->
 	<instant group="attack" spellid="60" name="Kage no Hou Jutsu" words="kage no hou jutsu" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_no_hou_jutsu.lua"/>
