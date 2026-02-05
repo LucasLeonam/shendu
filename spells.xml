@@ -11,41 +11,41 @@
 	<instant group="attack" spellid="10" name="Katon Goukakyuu" words="Katon Goukakyuu" level="8" mana="30" direction="1" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/sasuke/katon_goukakyuu.lua"/>
 	<instant group ="attack" spellid="11" name="Chidori" words="chidori" level="40" mana="150" premium="0" aggressive="1" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/sasuke/chidori.lua"/>
 	<instant group="support" spellid="12" name="Sharingan" words="sharingan" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/sasuke/sharingan.lua"/>
-	<instant group ="attack" spellid="13" name="Kirin" words="kirin" level="100" mana="500" range="6" needtarget="1" premium="0" aggressive="1" cooldown="30000" groupcooldown="0" needlearn="1" script="ways/sasuke/kirin.lua"/>
-	<instant group ="attack" spellid="14" name="Amaterasu" words="amaterasu" level="120" mana="1000" range="7" needtarget="1" premium="0" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/sasuke/amaterasu.lua"/>
+	<instant group ="attack" spellid="13" name="Kirin" words="kirin" level="120" mana="500" range="6" needtarget="1" premium="0" aggressive="1" cooldown="30000" groupcooldown="0" needlearn="1" script="ways/sasuke/kirin.lua"/>
+	<instant group ="attack" spellid="14" name="Amaterasu" words="amaterasu" level="150" mana="1000" range="7" needtarget="1" premium="0" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/sasuke/amaterasu.lua"/>
 	<instant group="attack" spellid="19" name="Chidori Nagashi" words="chidori nagashi" level="0" mana="150" premium="0" needweapon="1" cooldown="10000" groupcooldown="0" needlearn="1" script="ways/sasuke/chidori_nagashi.lua"/>
 	<!-- Naruto Spells -->
 	<instant group = "support" spellid="20" name="Kage Bunshin no Jutsu" words="kage bunshin no jutsu" level="8" mana="0" premium="0" cooldown="2000" needlearn="0" script="ways/naruto/kage_bunshin.lua"/>
 	<instant group ="attack" spellid="21" name="Naruto Rendan" words="naruto rendan" level="40" mana="150" premium="0" aggressive="1" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/naruto/rasengan.lua"/>
 	<instant group="support" spellid="22" name="Kyuubi no Chakra" words="kyuubi no chakra" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/naruto/kurama.lua"/>
-	<instant group="attack" spellid="23" name="Oodama Rasengan" words="oodama rasengan" level="100" mana="25" range="7" needtarget="1" cooldown="40000" groupcooldown="2000" blockwalls="1" needlearn="1" script="ways/naruto/fuutonshuriken.lua"/>
-	<instant group ="attack" spellid="24" name="Rasenshuriken" words="rasenshuriken" level="120" mana="150" premium="0" needtarget="1" aggressive="1" cooldown="10000" groupcooldown="0" needlearn="1" script="ways/naruto/rasenshuriken.lua"/>
+	<instant group="attack" spellid="23" name="Oodama Rasengan" words="oodama rasengan" level="120" mana="25" range="7" needtarget="1" cooldown="40000" groupcooldown="2000" blockwalls="1" needlearn="1" script="ways/naruto/fuutonshuriken.lua"/>
+	<instant group ="attack" spellid="24" name="Rasenshuriken" words="rasenshuriken" level="150" mana="150" premium="0" needtarget="1" aggressive="1" cooldown="10000" groupcooldown="0" needlearn="1" script="ways/naruto/rasenshuriken.lua"/>
 	<instant group="support" spellid="29" name="Sexy Jutsu" words="sexy jutsu" level="0" mana="350" premium="0" needweapon="1" cooldown="15000" groupcooldown="0" needlearn="1" script="ways/naruto/sexy_jutsu.lua"/>
 	<!-- Sakura Spells -->
 	<instant group="attack" spellid="30" name="Shanaroo" words="shanaroo" level="8" mana="30" direction="1" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/sakura/shanaroo.lua"/>
 	<instant group ="support" spellid="31" name="Shousen no Jutsu" words="shousen" level="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/sakura/shousen_jutsu.lua"/>
 	<instant group="support" spellid="32" name="Ninpou Souzou Saisei" words="ninpou souzou saisei" level="80" mana="300" premium="0" aggressive="0" selftarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/sakura/souzou_saisei.lua"/>
-	<instant group ="attack" spellid="33" name="Sakuraichi" words="sakuraichi" level="100" mana="120" direction="1" needtarget="0" premium="0" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/sakura/sakuraichi.lua"/>
-	<instant group ="attack" spellid="34" name="Okasho" words="okasho" level="120" mana="1000" range="7" needtarget="0" premium="0" aggressive="1" cooldown="650000" groupcooldown="0" needlearn="1" script="ways/sakura/okasho.lua"/>
+	<instant group ="attack" spellid="33" name="Sakuraichi" words="sakuraichi" level="120" mana="120" direction="1" needtarget="0" premium="0" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/sakura/sakuraichi.lua"/>
+	<instant group ="attack" spellid="34" name="Okasho" words="okasho" level="150" mana="1000" range="7" needtarget="0" premium="0" aggressive="1" cooldown="650000" groupcooldown="0" needlearn="1" script="ways/sakura/okasho.lua"/>
 	<instant group="attack" spellid="39" name="Seiketsu" words="seiketsu" level="0" mana="350" premium="0" needweapon="1" needtarget="1" cooldown="15000" groupcooldown="0" needlearn="1" script="ways/sakura/seiketsu.lua"/> 
 	<!-- Neji Spells -->
 	<instant group="attack" spellid="40" name="Hakkeshou Kaiten" words="hakkeshou kaiten" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/neji/hakkeshou_kaiten.lua"/>
 	<instant group ="support" spellid="41" name="Byakugan" words="byakugan" level="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/neji/byakugan.lua"/>
 	<instant group="attack" spellid="42" name="8 Tigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/neji/8_tigrams_palm.lua"/>
-	<instant group ="attack" spellid="43" name="TBD" words="TBD" level="100" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/neji/TBD.lua"/>
-	<instant group ="attack" spellid="44" name="64 Tigrams Palm" words="64 trigams palm" level="120" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/neji/64_tigrams_palm.lua"/>
+	<instant group ="attack" spellid="43" name="TBD" words="TBD" level="120" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/neji/TBD.lua"/>
+	<instant group ="attack" spellid="44" name="64 Tigrams Palm" words="64 trigams palm" level="150" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/neji/64_tigrams_palm.lua"/>
 	<!-- Hinata Spells -->
 	<instant group="attack" spellid="50" name="Hakkeshou Kaiten" words="hakkeshou kaiten" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/hinata/hakkeshou_kaiten.lua"/>
 	<instant group ="support" spellid="51" name="Byakugan" words="byakugan" level="40" mana="150" premium="0" selftarget="1" aggressive="0" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/hinata/byakugan.lua"/>
 	<instant group="attack" spellid="52" name="8 Tigrams Palm" words="8 trigams palm" level="80" mana="250" direction="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/hinata/8_tigrams_palm.lua"/>
-	<instant group ="attack" spellid="53" name="8 Tigrams Vacuum Palm" words="8 trigams vacuum palm" level="100" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/hinata/8_tigrams_vacuum_palm.lua"/>
-	<instant group ="attack" spellid="54" name="Twin Lion Palm" words="twin lion palm" level="120" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/hinata/twin_lion_palm.lua"/>
+	<instant group ="attack" spellid="53" name="8 Tigrams Vacuum Palm" words="8 trigams vacuum palm" level="120" mana="400" premium="0" direction="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/hinata/8_tigrams_vacuum_palm.lua"/>
+	<instant group ="attack" spellid="54" name="Twin Lion Palm" words="twin lion palm" level="150" mana="600" premium="0" direction="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/hinata/twin_lion_palm.lua"/>
 	<!-- Shikamaru Spells -->
 	<instant group="attack" spellid="60" name="Kage no Hou Jutsu" words="kage no hou jutsu" level="8" mana="40" selftarget="1" aggressive="0" cooldown="2000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_no_hou_jutsu.lua"/>
 	<instant group ="buff" spellid="61" name="Kagemane no Jutsu" words="kagemane no jutsu" level="40" mana="150" premium="0" needtarget="1" aggressive="1" cooldown="5000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kagemane_no_jutsu.lua"/>
 	<instant group="attack" spellid="62" name="Kage Nui no Jutsu" words="kage nui no jutsu" level="80" mana="250" range="6" needtarget="1" cooldown="16000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_nui_no_jutsu.lua"/>
-	<instant group ="attack" spellid="63" name="Kage Kubi Shibari no Jutsu" words="kage kubi shibari no jutsu" level="100" mana="400" premium="0" range="7" needtarget="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_kubi_shibari_no_jutsu.lua"/>
-	<instant group ="attack" spellid="64" name="Kage Tsukami no Jutsu" words="kage tsukami no jutsu" level="120" mana="600" premium="0" range="7" needtarget="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_tsukami_no_jutsu.lua"/>
+	<instant group ="attack" spellid="63" name="Kage Kubi Shibari no Jutsu" words="kage kubi shibari no jutsu" level="120" mana="400" premium="0" range="7" needtarget="1" aggressive="1" cooldown="40000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_kubi_shibari_no_jutsu.lua"/>
+	<instant group ="attack" spellid="64" name="Kage Tsukami no Jutsu" words="kage tsukami no jutsu" level="150" mana="600" premium="0" range="7" needtarget="1" aggressive="1" cooldown="60000" groupcooldown="0" needlearn="1" script="ways/shikamaru/kage_tsukami_no_jutsu.lua"/>
 
 
 	<!-- House Spells -->
