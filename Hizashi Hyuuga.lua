@@ -8,9 +8,9 @@ local lang = {}
 -- Storage = 0: Aprendeu Hakkeshou Kaiten (Ao se tornar Hyuuga)
 -- Storage >= 1: Aprendeu Byakugan (lvl 40)
 -- Storage >= 2: Aprendeu 8 Tigrams Palm (lvl 80)
--- Storage >= 3: Aprendeu 8 Tigrams Vacuum Palm (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Twin Lion Palm (lvl 120 + graduated)
-local HYUUGA_JUTSU_STORAGE = 70006
+-- Storage >= 3: Aprendeu TBD (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu 64 Tigrams Palm (lvl 150 + graduated)
+local HYUUGA_JUTSU_STORAGE = 70005
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
 function onCreatureDisappear(cid)           npcHandler:onCreatureDisappear(cid)         end
@@ -19,95 +19,95 @@ function onThink()                          npcHandler:onThink()                
 
 local messages = {
     ["en"] = {
-        help = "Hello |PLAYERNAME|. My name is Hinata Hyuuga, and I assist ninjas of the {Hyuuga} clan. Do you need anything from me?",
-        noLvl = "Sorry, but you're too weak to join the Hyuuga clan. Talk to me again when you're at least {level 5}.",
-        askHyuuga = "Ah, so you want to {become} a Hyuuga, hm? Do you really think you got what it takes?",
-        confirm = "I see you are very determined about this. There will be no second chances. You really want to {join} the powerful Hyuuga clan?",
-        done = "So be it! You are now a Hyuuga! Train hard and come speak to me again. I will teach you {Hakkeshou Kaiten}. Use it when you have the chance.",
+        help = "Hello |PLAYERNAME|. My name is Hizashi Hyuuga, and I assist ninjas of the branch family of the {Hyuuga} clan. Do you need anything from me?",
+        noLvl = "Sorry, but you're not strong enough to join us. Talk to me again when you're at least {level 5}.",
+        askHyuuga = "So you're here to {become} part of the branch family. Strange choice, but I won't go against it.",
+        confirm = "All right. I sense a strong sense of duty in you. Know that we only exist to protect the village and the main family. Knowing that, are you really sure you want to {join} us?",
+        done = "It is done. Now you are, too, a part of the strongest clan. Work hard and do whatever it takes to protect your brothers and sisters from the main family. I will also teach you {Hakkeshou Kaiten}, a strong technique that protects you while doing damage to everything around you. Now go, train, and get stronger.",
         isHyuuga = "Hello |PLAYERNAME|, what {brings} you here?",
         hasOtherClan = "You already belong to another clan. I cannot assist you.",
 
-        noLvlQuest1 = "You need to be at least {level 40} to start learning from me.",
-        quest1 = "I see that you have grown stronger. It's time to teach you a powerful ocular skill named {Byakugan}. Are you ready to {learn Byakugan}?",
+        noLvlQuest1 = "I admire your determination, but you are not ready yet to learn from me. Try to get to at least {level 40} to start learning from me.",
+        quest1 = "Great. I see your power has grown since the last time we spoke. I think now it's a great time to teach you Byakugan, a powerful ocular technique that allows you to see everything in a near 360-degree radius, x-ray vision, chakra pathways, and tenketsus. Are you ready to {learn Byakugan}?",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Byakugan.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Byakugan.",
-        quest1Done = "I never had a doubt that you would succeed. Use your new jutsu wisely and show the world the power of the Hyuuga clan.",
+        quest1Done = "Your eyes reflect your determination. Now nothing can catch you by surprise. Continue training and protecting our village and family.",
 
-        noLvlQuest2 = "I know you are excited to learn new jutsus, but you need to be at least {level 80} to survive my training. Come back when you are stronger.",
-        quest2 = "You have proven yourself worthy. I think it's time to teach you {8 Tigrams Palm}. Are you ready to {learn 8 Tigrams Palm}?",
+        noLvlQuest2 = "I see. You want to learn from me again. But it is not possible right now. You need more power and control to use the jutsu I want to teach you. Return to me when you're at least {level 80}.",
+        quest2 = "It looks like you now have the right amount of control of your chakra, so I can teach you how to expel chakra from your own tenketsus. This next jutsu uses this exact logic to disable 8 of your opponent's tenketsus. Are you ready to {learn 8 Tigrams Palm}?",
         quest2Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 8 Tigrams Palm.",
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Tigrams Palm.",
-        quest2Done = "So you survived my training and learned how to use the 8 Tigrams Palm. Impressive indeed. Keep training your technique.",
+        quest2Done = "I see you achieved total control of your tenketsus. Remember that when you hit your opponent's tenketsu, the chakra can't flow through them. Use it to your advantage.",
 
-        noLvlQuest3 = "So, you came to me again to learn the secrets of the Hyuuga clan. However, you need to be at least {level 100} and be {graduated}. Come back when you are stronger.",
-        quest3 = "You have done well to reach this point. It's time to teach you {8 Tigrams Vacuum Palm}. Are you ready to {learn 8 Tigrams Vacuum Palm}?",
-        quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 8 Tigrams Vacuum Palm.",
-        quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Tigrams Vacuum Palm.",
-        quest3Done = "Again you have proven yourself in my training. Use your new jutsu wisely.",
+        noLvlQuest3 = "You are eager to learn, is it not? I have heard of your achievements, and the main family is very happy about your contributions, but it's not time to teach you yet. {Level 120} would be fine for now. Return to me when you are ready.",
+        quest3 = "Hello, protector. I have received permission to teach you a technique named TBD. This technique TBD. Are you ready to {learn TBD}?",
+        quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you TBD.",
+        quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you TBD.",
+        quest3Done = "TBD.",
 
-        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Hyuuga clan, you need to be at least {level 120} and be {graduated}.",
-        quest4 = "So, you have done it... Very well, I will teach you the ultimate Hyuuga jutsu named {Twin Lion Palm}. Are you ready to {learn Twin Lion Palm}?",
-        quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Twin Lion Palm.",
-        quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Twin Lion Palm.",
-        quest4Done = "You've done it. I will teach you Twin Lion Palm now. Use it wisely and honor the Hyuuga clan.",
+        noLvlQuest4 = "Hello, |PLAYERNAME|. The main family informed me that you are one of our strongest members now and have given me authority to teach you a jutsu that only the main family and some elite members can use. However, I do not think you are strong enough. That said, when you get at least {level 150}, I can teach you something new.",
+        quest4 = "I almost didn't see you getting near me. This only shows that your control over chakra is impressive. There's a technique I'm eager to teach you. This technique allows you to use your Byakugan to hit everyone around you using Tigrams Palm. In this way, you hit 64 tenketsus of your opponents. You can, of course, share these 64 among your enemies. That said, are you ready to {learn 64 Tigrams Palm}?",
+        quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 64 Tigrams Palm.",
+        quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 64 Tigrams Palm.",
+        quest4Done = "Well, that was unexpected, but I'm not surprised. You mastered the head of the main family's jutsu like it was nothing. The strongest clan shows promising members once again. Continue protecting our village and the main family, and never forget your place.",
         
         alreadyLearnedByakugan = "You have already learned Byakugan from me.",
         alreadyLearned8TigramsPalm = "You have already learned 8 Tigrams Palm from me.",
-        alreadyLearned8TigramsVacuumPalm = "You have already learned 8 Tigrams Vacuum Palm from me.",
-        alreadyLearnedTwinLionPalm = "You have already learned Twin Lion Palm from me.",
+        alreadyLearnedTBD = "You have already learned TBD from me.",
+        alreadyLearned64TigramsPalm = "You have already learned 64 Tigrams Palm from me.",
         allTechniques = "You have mastered all the techniques I can teach you for now. There is nothing more for me to offer.",
     },
 
     ["pt"] = {
-        help = "Olá |PLAYERNAME|. Meu nome é Hinata Hyuuga e eu auxilio os ninjas do clã {Hyuuga}. Você precisa de algo de mim?",
-        noLvl = "Desculpe, mas você é muito fraco para entrar no clã Hyuuga. Fale comigo novamente quando tiver pelo menos {level 5}.",
-        askHyuuga = "Ah, então você quer se {tornar} um Hyuuga, é? Você realmente acha que tem o que é preciso?",
-        confirm = "Vejo que você está determinada a isso. Não haverá segunda chance. Você realmente quer {fazer parte} do poderoso clã Hyuuga?",
-        done = "Assim seja! Você agora é uma Hyuuga! Treine duro e venha falar comigo novamente. Vou te ensinar {Hakkeshou Kaiten}. Tente usar quando tiver a chance.",        
+        help = "Olá |PLAYERNAME|. Meu nome é Hizashi Hyuuga e eu auxilio os ninjas da família secundária do clã {Hyuuga}. Você precisa de algo de mim?",
+        noLvl = "Desculpe, mas você não é forte o bastante para se juntar a nós. Fale comigo novamente quando tiver pelo menos {level 5}.",
+        askHyuuga = "Então você veio para se {tornar} parte da família secundária. Escolha estranha, mas não vou impedir.",
+        confirm = "Tudo bem. Sinto um forte senso de dever em você. Saiba que existimos apenas para proteger a vila e a família principal. Sabendo disso, você realmente quer {fazer parte} do nosso clã?",
+        done = "Feito. Agora você também faz parte do clã mais forte. Trabalhe duro e faça o que for preciso para proteger seus irmãos e irmãs da família principal. Também vou te ensinar {Hakkeshou Kaiten}, uma técnica forte que te protege enquanto causa dano a tudo ao redor. Agora vá, treine e fique mais forte.",
         isHyuuga = "Olá |PLAYERNAME|, o que te {traz} aqui?",
         hasOtherClan = "Você já pertence a outro clã. Não posso te auxiliar.",
 
-        noLvlQuest1 = "Você precisa ser pelo menos {level 40} para começar a aprender comigo.",
-        quest1 = "Vejo que você ficou mais forte. É hora de te ensinar uma poderosa habilidade ocular chamada {Byakugan}. Você está pronta para {aprender Byakugan}?",
+        noLvlQuest1 = "Admiro sua determinação, mas você ainda não está pronto para aprender comigo. Tente chegar pelo menos ao {level 40} para que eu lhe ensine algo.",
+        quest1 = "Ótimo. Vejo que seu poder cresceu desde a última vez que conversamos. Acho que agora é um ótimo momento para te ensinar o Byakugan, uma técnica ocular poderosa que permite ver tudo em um raio de quase 360 graus, visão de raio-x, caminhos de chakra e tenketsus. Você está pronto para {aprender Byakugan}?",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Byakugan.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Byakugan.",
-        quest1Done = "Eu nunca duvidei que você conseguiria. Use seu novo jutsu com sabedoria e mostre ao mundo o poder do clã Hyuuga.",
+        quest1Done = "Seus olhos refletem sua determinação. Agora nada vai te pegar de surpresa. Continue treinando e protegendo nossa vila e família.",
 
-        noLvlQuest2 = "Eu sei que você está animada para aprender novos jutsus, mas você precisa ter pelo menos {level 80} para sobreviver ao meu treinamento. Volte quando ficar mais forte.",
-        quest2 = "Você se provou digna. Acho que é hora de eu te ensinar {8 Tigrams Palm}. Você está pronta para {aprender 8 Tigrams Palm}?",
+        noLvlQuest2 = "Entendo. Você quer aprender comigo de novo. Mas isso não é possível agora. Você precisa de mais poder e controle para usar o jutsu que quero te ensinar. Volte quando tiver pelo menos {level 80}.",
+        quest2 = "Parece que agora você tem o controle certo do seu chakra, então posso te ensinar a expelir chakra pelos próprios tenketsus. Este próximo jutsu usa exatamente essa lógica para desativar 8 tenketsus do seu oponente. Você está pronto para {aprender 8 Tigrams Palm}?",
         quest2Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 8 Tigrams Palm.",
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Tigrams Palm.",
-        quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar o 8 Tigrams Palm. Impressionante, de fato. Continue treinando sua técnica.",
+        quest2Done = "Vejo que você alcançou controle total dos seus tenketsus. Lembre-se de que, quando você atinge o tenketsu do oponente, ele não pode mais usar chakra. Use isso a seu favor.",
 
-        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Hyuuga. Entretanto, você precisa ter pelo menos {level 100} e se {graduar}. Volte quando ficar mais forte.",
-        quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar {8 Tigrams Vacuum Palm}. Você está pronta para {aprender 8 Tigrams Vacuum Palm}?",
-        quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 8 Tigrams Vacuum Palm.",
-        quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Tigrams Vacuum Palm.",
-        quest3Done = "Novamente você se provou em meu treinamento. Use seu novo jutsu com sabedoria.",
+        noLvlQuest3 = "Você está ansioso para aprender, não é? Ouvi sobre suas conquistas e a família principal está muito satisfeita com suas contribuições, mas ainda não é hora de te ensinar. {Level 120} seria suficiente por enquanto. Volte quando estiver pronto.",
+        quest3 = "Olá, protetor. Recebi permissão para te ensinar uma técnica chamada TBD. Esta técnica TBD. Você está pronto para {aprender TBD}?",
+        quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei TBD.",
+        quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei TBD.",
+        quest3Done = "TBD.",
 
-        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Hyuuga, você precisa ter pelo menos {level 120} e ser {graduada}.",
-        quest4 = "Então, você conseguiu... Muito bem, vou te ensinar o jutsu supremo Hyuuga chamado {Twin Lion Palm}. Você está pronta para {aprender Twin Lion Palm}?",
-        quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Twin Lion Palm.",
-        quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Twin Lion Palm.",
-        quest4Done = "Você conseguiu. Vou te ensinar Twin Lion Palm agora. Use-o com sabedoria e honre o clã Hyuuga!",
+        noLvlQuest4 = "Olá, |PLAYERNAME|. A família principal me informou que você é um dos nossos membros mais fortes agora e me deu autorização para te ensinar um jutsu que apenas a família principal e alguns membros de elite podem usar. No entanto, não acho que você seja forte o bastante. Dito isso, quando você tiver pelo menos {level 150}, poderei te ensinar algo novo.",
+        quest4 = "Eu quase não vi você se aproximando de mim. Isso só mostra que seu controle sobre o chakra é impressionante. Há uma técnica que estou ansioso para te ensinar. Essa técnica permite usar seu Byakugan para atingir todos ao seu redor usando Tigrams Palm. Assim, você atinge 64 tenketsus dos seus oponentes. Você pode, claro, dividir esses 64 entre seus inimigos. Dito isso, você está pronto para {aprender 64 Tigrams Palm}?",
+        quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 64 Tigrams Palm.",
+        quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 64 Tigrams Palm.",
+        quest4Done = "Bem, isso foi inesperado, mas não estou surpreso. Você dominou o jutsu do líder da família principal como se não fosse nada. O clã mais forte mostra novamente membros promissores. Continue protegendo nossa vila e a família principal, e nunca se esqueça do seu lugar.",
         
         alreadyLearnedByakugan = "Você já aprendeu Byakugan de mim.",
         alreadyLearned8TigramsPalm = "Você já aprendeu 8 Tigrams Palm de mim.",
-        alreadyLearned8TigramsVacuumPalm = "Você já aprendeu 8 Tigrams Vacuum Palm de mim.",
-        alreadyLearnedTwinLionPalm = "Você já aprendeu Twin Lion Palm de mim.",
+        alreadyLearnedTBD = "Você já aprendeu TBD de mim.",
+        alreadyLearned64TigramsPalm = "Você já aprendeu 64 Tigrams Palm de mim.",
         allTechniques = "Você dominou todas as técnicas que posso te ensinar por enquanto. Não tenho mais nada a oferecer.",
     }
 }
 
 local validWords = {
-    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 tigrams palm", "aprender 8 tigrams vacuum palm", "aprender twin lion palm"},
-    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 tigrams palm", "learn 8 tigrams vacuum palm", "learn twin lion palm"}
+    ["pt"] = {"ajudar", "hyuuga", "tornar", "fazer parte", "traz", "aprender byakugan", "aprender 8 tigrams palm", "aprender 64 tigrams palm", "aprender TBD"},
+    ["en"] = {"help", "hyuuga", "become", "join", "brings", "learn byakugan", "learn 8 tigrams palm", "learn 64 tigrams palm", "learn TBD"}
 }
 
 local function creatureSayCallback(cid, type, msg)
     local msgLower = string.lower(msg)
     local player = Player(cid)
-    local hyuugaVocationId = 13
+    local hyuugaVocationId = 12
     local playerVocation = player:getVocation():getId()
     local currentLang = npcHandler.languages[cid] or "pt" -- idioma padrão pt
 
@@ -163,8 +163,8 @@ local function creatureSayCallback(cid, type, msg)
     elseif npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "fazer parte") or msgcontains(msgLower, "join")) then
         player:setVocation(Vocation(hyuugaVocationId))
         player:save()
-        player:setOutfit({lookType = 420})
-        player:addOutfit(420)
+        player:setOutfit({lookType = 410})
+        player:addOutfit(410)
         player:learnSpell("Hakkeshou Kaiten")
         player:getPosition():sendMagicEffect(478)
         npcHandler:say(messages[currentLang].done, cid)
@@ -283,8 +283,8 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Learn 8 Tigrams Vacuum Palm
-    if msgcontains(msgLower, "learn 8 tigrams vacuum palm") or msgcontains(msgLower, "aprender 8 tigrams vacuum palm") then
+    -- Learn TBD (lvl 100)
+    if msgcontains(msgLower, "learn TBD") or msgcontains(msgLower, "aprender TBD") then
         local hyuugaJutsu = player:getStorageValue(HYUUGA_JUTSU_STORAGE)
         if hyuugaJutsu == -1 then
             hyuugaJutsu = 0
@@ -292,7 +292,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         if hyuugaJutsu >= 3 then
-            npcHandler:say(messages[currentLang].alreadyLearned8TigramsVacuumPalm, cid)
+            npcHandler:say(messages[currentLang].alreadyLearnedTBD, cid)
             npcHandler.topic[cid] = 0
             return true
         end
@@ -304,7 +304,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         player:removeItem(10549, 1)
-        player:learnSpell("8 Tigrams Vacuum Palm")
+        player:learnSpell("TBD")
         player:getPosition():sendMagicEffect(478)
         player:setStorageValue(HYUUGA_JUTSU_STORAGE, 3)
         player:save()
@@ -314,8 +314,8 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Learn Twin Lion Palm
-    if msgcontains(msgLower, "learn twin lion palm") or msgcontains(msgLower, "aprender twin lion palm") then
+    -- Learn 64 Tigrams Palm
+    if msgcontains(msgLower, "learn 64 tigrams palm") or msgcontains(msgLower, "aprender 64 tigrams palm") then
         local hyuugaJutsu = player:getStorageValue(HYUUGA_JUTSU_STORAGE)
         if hyuugaJutsu == -1 then
             hyuugaJutsu = 0
@@ -323,7 +323,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         if hyuugaJutsu >= 4 then
-            npcHandler:say(messages[currentLang].alreadyLearnedTwinLionPalm, cid)
+            npcHandler:say(messages[currentLang].alreadyLearned64TigramsPalm, cid)
             npcHandler.topic[cid] = 0
             return true
         end
@@ -335,7 +335,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         player:removeItem(10549, 1)
-        player:learnSpell("Twin Lion Palm")
+        player:learnSpell("64 Tigrams Palm")
         player:getPosition():sendMagicEffect(478)
         player:setStorageValue(HYUUGA_JUTSU_STORAGE, 4)
         player:save()
