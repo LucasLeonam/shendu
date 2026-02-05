@@ -8,8 +8,8 @@ local lang = {}
 -- Storage = 0: Aprendeu Kage no Hou Jutsu (Ao se tornar Nara)
 -- Storage >= 1: Aprendeu Kagemane no Jutsu (lvl 40)
 -- Storage >= 2: Aprendeu Kage Nui no Jutsu (lvl 80)
--- Storage >= 3: Aprendeu Kage Kubi Shibari no Jutsu (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Kage Tsukami no Jutsu (lvl 120 + graduated)
+-- Storage >= 3: Aprendeu Kage Kubi Shibari no Jutsu (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu Kage Tsukami no Jutsu (lvl 150 + graduated)
 local NARA_JUTSU_STORAGE = 70007
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -39,13 +39,13 @@ local messages = {
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Nui no Jutsu.",
         quest2Done = "So you survived my training and learned how to use Kage Nui no Jutsu. Impressive indeed. Keep training your technique.",
 
-        noLvlQuest3 = "So, you came to me again to learn the secrets of the Nara clan. However, you need to be at least {level 100} and be {graduated}. Come back when you are stronger.",
+        noLvlQuest3 = "So, you came to me again to learn the secrets of the Nara clan. However, you need to be at least {level 120} and be {graduated}. Come back when you are stronger.",
         quest3 = "You have done well to reach this point. It's time to teach you {Kage Kubi Shibari no Jutsu}. Are you ready to {learn Kage Kubi Shibari no Jutsu}?",
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kage Kubi Shibari no Jutsu.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Kubi Shibari no Jutsu.",
         quest3Done = "Again you have proven yourself in my training. Use your new jutsu wisely.",
 
-        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Nara clan, you need to be at least {level 120} and be {graduated}.",
+        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Nara clan, you need to be at least {level 150} and be {graduated}.",
         quest4 = "So, you have done it... Very well, I will teach you the ultimate Nara jutsu named {Kage Tsukami no Jutsu}. Are you ready to {learn Kage Tsukami no Jutsu}?",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kage Tsukami no Jutsu.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Tsukami no Jutsu.",
@@ -79,13 +79,13 @@ local messages = {
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Nui no Jutsu.",
         quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar Kage Nui no Jutsu. Impressionante, de fato. Continue treinando sua técnica.",
 
-        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Nara. Entretanto, você precisa ter pelo menos {level 100} e se {graduar}. Volte quando ficar mais forte.",
+        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Nara. Entretanto, você precisa ter pelo menos {level 120} e se {graduar}. Volte quando ficar mais forte.",
         quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar {Kage Kubi Shibari no Jutsu}. Você está pronto para {aprender Kage Kubi Shibari no Jutsu}?",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kage Kubi Shibari no Jutsu.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Kubi Shibari no Jutsu.",
         quest3Done = "Novamente você se provou em meu treinamento. Use seu novo jutsu com sabedoria.",
 
-        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Nara, você precisa ter pelo menos {level 120} e ser {graduado}.",
+        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Nara, você precisa ter pelo menos {level 150} e ser {graduado}.",
         quest4 = "Então, você conseguiu... Muito bem, vou te ensinar o jutsu supremo Nara chamado {Kage Tsukami no Jutsu}. Você está pronto para {aprender Kage Tsukami no Jutsu}?",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kage Tsukami no Jutsu.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Tsukami no Jutsu.",

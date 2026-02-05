@@ -8,8 +8,8 @@ local lang = {}
 -- Storage = 0: Aprendeu Hakkeshou Kaiten (Ao se tornar Hyuuga)
 -- Storage >= 1: Aprendeu Byakugan (lvl 40)
 -- Storage >= 2: Aprendeu 8 Tigrams Palm (lvl 80)
--- Storage >= 3: Aprendeu 8 Tigrams Vacuum Palm (lvl 100 + graduated)
--- Storage >= 4: Aprendeu Twin Lion Palm (lvl 120 + graduated)
+-- Storage >= 3: Aprendeu 8 Tigrams Vacuum Palm (lvl 120 + graduated)
+-- Storage >= 4: Aprendeu Twin Lion Palm (lvl 150 + graduated)
 local HYUUGA_JUTSU_STORAGE = 70006
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -39,13 +39,13 @@ local messages = {
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Tigrams Palm.",
         quest2Done = "So you survived my training and learned how to use the 8 Tigrams Palm. Impressive indeed. Keep training your technique.",
 
-        noLvlQuest3 = "So, you came to me again to learn the secrets of the Hyuuga clan. However, you need to be at least {level 100} and be {graduated}. Come back when you are stronger.",
+        noLvlQuest3 = "So, you came to me again to learn the secrets of the Hyuuga clan. However, you need to be at least {level 120} and be {graduated}. Come back when you are stronger.",
         quest3 = "You have done well to reach this point. It's time to teach you {8 Tigrams Vacuum Palm}. Are you ready to {learn 8 Tigrams Vacuum Palm}?",
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you 8 Tigrams Vacuum Palm.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you 8 Tigrams Vacuum Palm.",
         quest3Done = "Again you have proven yourself in my training. Use your new jutsu wisely.",
 
-        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Hyuuga clan, you need to be at least {level 120} and be {graduated}.",
+        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Hyuuga clan, you need to be at least {level 150} and be {graduated}.",
         quest4 = "So, you have done it... Very well, I will teach you the ultimate Hyuuga jutsu named {Twin Lion Palm}. Are you ready to {learn Twin Lion Palm}?",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Twin Lion Palm.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Twin Lion Palm.",
@@ -79,13 +79,13 @@ local messages = {
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Tigrams Palm.",
         quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar o 8 Tigrams Palm. Impressionante, de fato. Continue treinando sua técnica.",
 
-        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Hyuuga. Entretanto, você precisa ter pelo menos {level 100} e se {graduar}. Volte quando ficar mais forte.",
+        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Hyuuga. Entretanto, você precisa ter pelo menos {level 120} e se {graduar}. Volte quando ficar mais forte.",
         quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar {8 Tigrams Vacuum Palm}. Você está pronta para {aprender 8 Tigrams Vacuum Palm}?",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei 8 Tigrams Vacuum Palm.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei 8 Tigrams Vacuum Palm.",
         quest3Done = "Novamente você se provou em meu treinamento. Use seu novo jutsu com sabedoria.",
 
-        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Hyuuga, você precisa ter pelo menos {level 120} e ser {graduada}.",
+        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Hyuuga, você precisa ter pelo menos {level 150} e ser {graduada}.",
         quest4 = "Então, você conseguiu... Muito bem, vou te ensinar o jutsu supremo Hyuuga chamado {Twin Lion Palm}. Você está pronta para {aprender Twin Lion Palm}?",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Twin Lion Palm.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Twin Lion Palm.",
