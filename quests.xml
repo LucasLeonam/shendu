@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quests>
+	<quest name="Academy Quest" startstorageid="60001" startstoragevalue="1">	
+		<mission name="Academy Mission 1: Recovering Kunais and Shurikens" storageid="60001" startvalue="1" endvalue="2">
+			<missionstate id="1" description="Kill the academy students and recover the kunais and shurikens for Shiro." />
+			<missionstate id="2" description="You delivered the items to Shiro, and he taught you the combat jutsus Kogeki and Kyudan." />
+		</mission>
+		<mission name="Academy Mission 2: Rescue the Wild Boar" storageid="60002" startvalue="1" endvalue="2">
+			<missionstate id="1" description="K" />
+			<missionstate id="2" description="" />
+		</mission>
+		<mission name="Academy Mission 3: Bringing the Fish Back to Life" storageid="60003" startvalue="1" endvalue="2">
+			<missionstate id="1" description="" />
+			<missionstate id="2" description="" />
+		</mission>
+	</quest>
+	<quest name="Example Quest I" startstorageid="1001" startstoragevalue="1">
+		<mission name="Example Mission 1" storageid="1001" startvalue="1" endvalue="3" ignoreendvalue="true">
+			<missionstate id="1" description="Example description 1" />
+			<missionstate id="2" description="Example description 2" />
+			<missionstate id="3" description="Example description 3" />
+		</mission>
+		<mission name="Example Mission 2" storageid="1001" startvalue="4" endvalue="5">
+			<missionstate id="4" description="Example description 1" />
+			<missionstate id="5" description="Example description 2" />
+		</mission>
+	</quest>
+	
+	<!-- ============================================ -->
+	<!-- UCHIHA CLAN QUEST LINE - Storage: 70002      -->
+	<!-- ============================================ -->
+	<quest name="The Path of the Uchiha" startstorageid="70002" startstoragevalue="0">
+		
+		<!-- Mission 0: Joining the Uchiha Clan -->
+		<mission name="Becoming an Uchiha" storageid="70002" startvalue="0" endvalue="0">
+			<missionstate id="0" description="You have joined the Uchiha clan! Fugaku Uchiha welcomed you and taught you the fire technique Katon Goukakyuu. He mentioned that more training awaits when you reach level 40." />
+		</mission>
+		
+		<!-- Mission 1: The Sound of a Thousand Birds (Chidori) -->
+		<mission name="Quest 1: The Sound of a Thousand Birds" storageid="70002" startvalue="1" endvalue="3">
+			<missionstate id="1" description="Fugaku sent you to train with Kakashi Hatake, the Copy Ninja. Kakashi noticed your aptitude for Raiton (Lightning Release), but your lack of control is causing internal damage. You must learn discipline before power. Continue your training with Kakashi to learn Chidori." />
+			<missionstate id="2" description="You completed Kakashi's harsh training: hit fast-moving targets with precision, witnessed disturbing Genjutsu illusions showing the consequences of losing control, and defeated a mini-boss by using Raiton strategically. Kakashi praised your progress. Return to Fugaku to unlock the sealed Chidori technique." />
+			<missionstate id="3" description="Fugaku removed the seal Kakashi placed on Chidori. The lightning blade technique is now fully yours. He warned: 'Use it with discipline.' The sound of a thousand birds chirps in your hand when you channel Raiton chakra. (Technique learned: Chidori)" />
+		</mission>
+		
+		<!-- Mission 2: The Eyes That Never Sleep (Sharingan) -->
+		<mission name="Quest 2: The Eyes That Never Sleep" storageid="70002" startvalue="4" endvalue="6">
+			<missionstate id="4" description="Fugaku assigned you a dangerous task: return to the ruins of the Uchiha clan compound. He granted you chakra access to bypass the seals. Search for truths buried in the past. He hinted that under the right circumstances, you might awaken your Sharingan. Explore the ruins carefully." />
+			<missionstate id="5" description="You survived the echoes of the ruins and witnessed the painful memories of the massacre etched into the walls. The emotional trauma triggered the awakening of your Sharingan! Your eyes have changed. Return to Fugaku to report what happened." />
+			<missionstate id="6" description="Fugaku acknowledged your awakening: 'You survived the echoes and awakened your Sharingan. Good. But awakening is only the first step. Mastery requires far more than emotion.' Your crimson eyes now see the world differently. (Technique learned: Sharingan)" />
+		</mission>
+		
+		<!-- Mission 3: The Sky Judgement (Orochimaru) -->
+		<mission name="Quest 3: The Sky Judgement" storageid="70002" startvalue="7" endvalue="9">
+			<missionstate id="7" description="The Hokage issued a direct order through Fugaku: capture Orochimaru, one of the Legendary Sannin, alive. He possesses forbidden knowledge the village needs. Intel suggests he's hiding between Konoha and the Sound Village. This is a dangerous mission. Locate Orochimaru and bring him to justice." />
+			<missionstate id="8" description="You found Orochimaru and fought him, managing to corner the Sannin. But it was a trap. He never intended to fight seriously. Instead, he planted 'seeds of doubt' about the Uchiha massacre, hinting that the truth is not what you were told. He marked you with a curse seal as a 'gift' and escaped, laughing. The mission failed. Return to Fugaku with the bitter news." />
+			<missionstate id="9" description="Fugaku was furious: 'You failed to capture him and allowed yourself to be manipulated. You have brought disgrace upon the Uchiha name. Learn from this.' Despite the failure, he taught you Kirin, the legendary lightning technique that commands the very thunder itself. Perhaps power will help you avoid future failures. (Technique learned: Kirin)" />
+		</mission>
+		
+		<!-- Mission 4: The Truth That Burns (Amaterasu) -->
+		<mission name="Quest 4: The Truth That Burns" storageid="70002" startvalue="10" endvalue="12">
+			<missionstate id="10" description="Fugaku relayed a message from the Hokage: he believes the truth behind the Uchiha massacre is more complex than the official story. The Hokage requested your presence personally. This is highly unusual. Go to the Hokage's office and hear what he has to say. Something important is about to be revealed." />
+			<missionstate id="11" description="The Hokage revealed the terrible truth: the Uchiha massacre was not a random act of madness. It was a village-sanctioned execution to prevent a coup d'état planned by the clan. The village elders ordered it. A survivor carried out the order to protect the village from civil war. This truth is heavy to bear, but you now understand the full history of your clan. Return to Fugaku with this knowledge." />
+			<missionstate id="12" description="Fugaku listened intently to everything the Hokage revealed. 'So, you finally know the truth about our clan's past. This knowledge will forge your path forward.' He sensed something in your eyes—if your Mangekyou Sharingan has awakened through training and evolution, he will unlock your ability to use Amaterasu—the black flames that burn everything in their path. He warned: 'The Mangekyou's power comes at a great cost. Excessive use leads to blindness. Power without restraint destroys its wielder.' (Technique learned: Amaterasu - requires Mangekyou Sharingan)" />
+		</mission>
+		
+	</quest>
+</quests>
