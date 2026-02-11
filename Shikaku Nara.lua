@@ -4,12 +4,12 @@ NpcSystem.parseParameters(npcHandler)
 
 local lang = {}
 
--- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Aprendeu Kage no Hou Jutsu (Ao se tornar Nara)
--- Storage >= 1: Aprendeu Kagemane no Jutsu (lvl 40)
--- Storage >= 2: Aprendeu Kage Nui no Jutsu (lvl 80)
--- Storage >= 3: Aprendeu Kage Kubi Shibari no Jutsu (lvl 120 + graduated)
--- Storage >= 4: Aprendeu Kage Tsukami no Jutsu (lvl 150 + graduated)
+-- Unique storage to track learned jutsus
+-- Storage = 0: Learned Kage no Hou Jutsu (When becoming Nara)
+-- Storage >= 1: Learned Kagemane no Jutsu (lvl 40)
+-- Storage >= 2: Learned Kage Nui no Jutsu (lvl 80)
+-- Storage >= 3: Learned Kage Kubi Shibari no Jutsu (lvl 120 + graduated)
+-- Storage >= 4: Learned Kage Tsukami no Jutsu (lvl 150 + graduated)
 local NARA_JUTSU_STORAGE = 70007
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -19,37 +19,37 @@ function onThink()                          npcHandler:onThink()                
 
 local messages = {
     ["en"] = {
-        help = "Hello |PLAYERNAME|. My name is Shikamaru Nara, and I assist ninjas of the {Nara} clan. Do you need anything from me?",
-        noLvl = "Sorry, but you're too weak to join the Nara clan. Talk to me again when you're at least {level 5}.",
-        askNara = "Ah, so you want to {become} a Nara, hm? Do you really think you got what it takes?",
-        confirm = "I see you are very determined about this. There will be no second chances. You really want to {join} the powerful Nara clan?",
-        done = "So be it! You are now a Nara! Train hard and come speak to me again. I will teach you {Kage no Hou Jutsu}. Use it when you have the chance.",
-        isNara = "Hello |PLAYERNAME|, what {brings} you here?",
-        hasOtherClan = "You already belong to another clan. I cannot assist you.",
+        help = "{Nara}",
+        noLvl = "{level 5}",
+        askNara = "{become}",
+        confirm = "{join}",
+        done = "{Kage no Hou Jutsu}",
+        isNara = "{brings}",
+        hasOtherClan = "",
 
-        noLvlQuest1 = "You need to be at least {level 40} to start learning from me.",
-        quest1 = "I see that you have grown stronger. It's time to teach you a powerful technique named {Kagemane no Jutsu}. Are you ready to {learn Kagemane no Jutsu}?",
+        noLvlQuest1 = "{level 40}",
+        quest1 = "{learn Kagemane no Jutsu}",
         quest1Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kagemane no Jutsu.",
         quest1Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kagemane no Jutsu.",
-        quest1Done = "I never had a doubt that you would succeed. Use your new jutsu wisely and show the world the power of the Nara clan.",
+        quest1Done = "",
 
-        noLvlQuest2 = "I know you are excited to learn new jutsus, but you need to be at least {level 80} to survive my training. Come back when you are stronger.",
-        quest2 = "You have proven yourself worthy. I think it's time to teach you {Kage Nui no Jutsu}. Are you ready to {learn Kage Nui no Jutsu}?",
+        noLvlQuest2 = "{level 80}",
+        quest2 = "{learn Kage Nui no Jutsu}",
         quest2Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kage Nui no Jutsu.",
         quest2Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Nui no Jutsu.",
-        quest2Done = "So you survived my training and learned how to use Kage Nui no Jutsu. Impressive indeed. Keep training your technique.",
+        quest2Done = "",
 
-        noLvlQuest3 = "So, you came to me again to learn the secrets of the Nara clan. However, you need to be at least {level 120} and be {graduated}. Come back when you are stronger.",
-        quest3 = "You have done well to reach this point. It's time to teach you {Kage Kubi Shibari no Jutsu}. Are you ready to {learn Kage Kubi Shibari no Jutsu}?",
+        noLvlQuest3 = "{level 120} {graduated}",
+        quest3 = "{learn Kage Kubi Shibari no Jutsu}",
         quest3Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kage Kubi Shibari no Jutsu.",
         quest3Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Kubi Shibari no Jutsu.",
-        quest3Done = "Again you have proven yourself in my training. Use your new jutsu wisely.",
+        quest3Done = "",
 
-        noLvlQuest4 = "You have come far, |PLAYERNAME|. But to learn the ultimate power of the Nara clan, you need to be at least {level 150} and be {graduated}.",
-        quest4 = "So, you have done it... Very well, I will teach you the ultimate Nara jutsu named {Kage Tsukami no Jutsu}. Are you ready to {learn Kage Tsukami no Jutsu}?",
+        noLvlQuest4 = "{level 150} {graduated}",
+        quest4 = "{learn Kage Tsukami no Jutsu}",
         quest4Requirements = "So let's start your training. Bring me {one ryo} and I will teach you Kage Tsukami no Jutsu.",
         quest4Incomplete = "You don't have {one ryo} with you. Come back when you do, and I will teach you Kage Tsukami no Jutsu.",
-        quest4Done = "You've done it. I will teach you Kage Tsukami no Jutsu now. Use it wisely and honor the Nara clan.",
+        quest4Done = "",
         
         alreadyLearnedKagemane = "You have already learned Kagemane no Jutsu from me.",
         alreadyLearnedKageNui = "You have already learned Kage Nui no Jutsu from me.",
@@ -59,38 +59,38 @@ local messages = {
     },
 
     ["pt"] = {
-        help = "Olá |PLAYERNAME|. Meu nome é Shikamaru Nara e eu auxilio os ninjas do clã {Nara}. Você precisa de algo de mim?",
-        noLvl = "Desculpe, mas você é muito fraco para entrar no clã Nara. Fale comigo novamente quando tiver pelo menos {level 5}.",
-        askNara = "Ah, então você quer se {tornar} um Nara, é? Você realmente acha que tem o que é preciso?",
-        confirm = "Vejo que você está determinado a isso. Não haverá segunda chance. Você realmente quer {fazer parte} do poderoso clã Nara?",
-        done = "Assim seja! Você agora é um Nara! Treine duro e venha falar comigo novamente. Vou te ensinar {Kage no Hou Jutsu}. Tente usar quando tiver a chance.",        
-        isNara = "Olá |PLAYERNAME|, o que te {traz} aqui?",
-        hasOtherClan = "Você já pertence a outro clã. Não posso te auxiliar.",
+        help = "{Nara}",
+        noLvl = "{level 5}",
+        askNara = "{tornar}",
+        confirm = "{fazer parte}",
+        done = "{Kage no Hou Jutsu}",        
+        isNara = "{traz}",
+        hasOtherClan = "",
 
-        noLvlQuest1 = "Você precisa ser pelo menos {level 40} para começar a aprender comigo.",
-        quest1 = "Vejo que você ficou mais forte. É hora de te ensinar uma técnica poderosa chamada {Kagemane no Jutsu}. Você está pronto para {aprender Kagemane no Jutsu}?",
+        noLvlQuest1 = "{level 40}",
+        quest1 = "{aprender Kagemane no Jutsu}",
         quest1Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kagemane no Jutsu.",
         quest1Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kagemane no Jutsu.",
-        quest1Done = "Eu nunca duvidei que você conseguiria. Use seu novo jutsu com sabedoria e mostre ao mundo o poder do clã Nara.",
+        quest1Done = "",
 
-        noLvlQuest2 = "Eu sei que você está animado para aprender novos jutsus, mas você precisa ter pelo menos {level 80} para sobreviver ao meu treinamento. Volte quando ficar mais forte.",
-        quest2 = "Você se provou digno. Acho que é hora de eu te ensinar {Kage Nui no Jutsu}. Você está pronto para {aprender Kage Nui no Jutsu}?",
+        noLvlQuest2 = "{level 80}",
+        quest2 = "{aprender Kage Nui no Jutsu}",
         quest2Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kage Nui no Jutsu.",
         quest2Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Nui no Jutsu.",
-        quest2Done = "Então você sobreviveu ao meu treinamento e aprendeu a usar Kage Nui no Jutsu. Impressionante, de fato. Continue treinando sua técnica.",
+        quest2Done = "",
 
-        noLvlQuest3 = "Então, você veio a mim novamente para aprender os segredos do clã Nara. Entretanto, você precisa ter pelo menos {level 120} e se {graduar}. Volte quando ficar mais forte.",
-        quest3 = "Você fez bem em chegar até aqui. É hora de te ensinar {Kage Kubi Shibari no Jutsu}. Você está pronto para {aprender Kage Kubi Shibari no Jutsu}?",
+        noLvlQuest3 = "{level 120} {graduar}",
+        quest3 = "{aprender Kage Kubi Shibari no Jutsu}",
         quest3Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kage Kubi Shibari no Jutsu.",
         quest3Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Kubi Shibari no Jutsu.",
-        quest3Done = "Novamente você se provou em meu treinamento. Use seu novo jutsu com sabedoria.",
+        quest3Done = "",
 
-        noLvlQuest4 = "Você chegou longe, |PLAYERNAME|. Mas para aprender o poder supremo do clã Nara, você precisa ter pelo menos {level 150} e ser {graduado}.",
-        quest4 = "Então, você conseguiu... Muito bem, vou te ensinar o jutsu supremo Nara chamado {Kage Tsukami no Jutsu}. Você está pronto para {aprender Kage Tsukami no Jutsu}?",
+        noLvlQuest4 = "{level 150} {graduado}",
+        quest4 = "{aprender Kage Tsukami no Jutsu}",
         quest4Requirements = "Então, vamos começar seu treinamento. Traga-me {um ryo} e eu te ensinarei Kage Tsukami no Jutsu.",
         quest4Incomplete = "Você não tem {um ryo} com você. Volte quando tiver, e eu te ensinarei Kage Tsukami no Jutsu.",
-        quest4Done = "Você conseguiu. Vou te ensinar Kage Tsukami no Jutsu agora. Use-o com sabedoria e honre o clã Nara!",
-        
+        quest4Done = "",
+
         alreadyLearnedKagemane = "Você já aprendeu Kagemane no Jutsu de mim.",
         alreadyLearnedKageNui = "Você já aprendeu Kage Nui no Jutsu de mim.",
         alreadyLearnedKageKubiShibari = "Você já aprendeu Kage Kubi Shibari no Jutsu de mim.",
@@ -109,7 +109,7 @@ local function creatureSayCallback(cid, type, msg)
     local player = Player(cid)
     local naraVocationId = 14
     local playerVocation = player:getVocation():getId()
-    local currentLang = npcHandler.languages[cid] or "pt" -- idioma padrão pt
+    local currentLang = npcHandler.languages[cid] or "pt" -- default language pt
 
     npcHandler:addFocus(cid)
 
@@ -149,7 +149,7 @@ local function creatureSayCallback(cid, type, msg)
         end
     end
 
-    -- Fluxo de confirmação
+    -- Confirmation flow
     if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "tornar") or msgcontains(msgLower, "become")) then
         if player:getLevel() < 5 then
             npcHandler:say(messages[currentLang].noLvl, cid)
@@ -173,7 +173,7 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Verifica qual jutsu o jogador pode aprender
+    -- Check which jutsu the player can learn
     if msgcontains(msgLower, "brings") or msgcontains(msgLower, "traz") then
         if playerVocation ~= naraVocationId then
             npcHandler:say(messages[currentLang].help, cid)
@@ -186,7 +186,7 @@ local function creatureSayCallback(cid, type, msg)
             naraJutsu = 0
         end
         
-        -- Determinar qual é o próximo jutsu baseado no storage
+        -- Determine which is the next jutsu based on storage
         if naraJutsu == 0 then
             if player:getLevel() < 40 then
                 npcHandler:say(messages[currentLang].noLvlQuest1, cid)

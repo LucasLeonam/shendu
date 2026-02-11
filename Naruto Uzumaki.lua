@@ -4,12 +4,12 @@ NpcSystem.parseParameters(npcHandler)
 
 local lang = {}
 
--- Storage único para rastrear jutsus aprendidos
--- Storage = 0: Aprendeu Kage Bunshin no Jutsu (ao se tornar Uzumaki)
--- Storage >= 1: Aprendeu Naruto Rendan (lvl 40)
--- Storage >= 2: Aprendeu Kyuubi no Chakra (lvl 80)
--- Storage >= 3: Aprendeu Oodama Rasengan (lvl 120 + graduated)
--- Storage >= 4: Aprendeu Rasenshuriken (lvl 150 + graduated)
+-- Unique storage to track learned jutsus
+-- Storage = 0: Learned Kage Bunshin no Jutsu (when becoming Uzumaki)
+-- Storage >= 1: Learned Naruto Rendan (lvl 40)
+-- Storage >= 2: Learned Kyuubi no Chakra (lvl 80)
+-- Storage >= 3: Learned Oodama Rasengan (lvl 120 + graduated)
+-- Storage >= 4: Learned Rasenshuriken (lvl 150 + graduated)
 local NARUTO_JUTSU_STORAGE = 70004
 
 function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
@@ -109,7 +109,7 @@ local function creatureSayCallback(cid, type, msg)
     local player = Player(cid)
     local narutoVocationId = 10
     local playerVocation = player:getVocation():getId()
-    local currentLang = npcHandler.languages[cid] or "pt" -- idioma padrão pt
+    local currentLang = npcHandler.languages[cid] or "pt" -- default language pt
 
     npcHandler:addFocus(cid)
 
@@ -149,7 +149,7 @@ local function creatureSayCallback(cid, type, msg)
         end
     end
 
-    -- Fluxo de confirmação
+    -- Confirmation flow
     if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "tornar") or msgcontains(msgLower, "become")) then
         if player:getLevel() < 5 then
             npcHandler:say(messages[currentLang].noLvl, cid)
@@ -173,7 +173,7 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
 
-    -- Verifica qual jutsu o jogador pode aprender
+    -- Check which jutsu the player can learn
     if msgcontains(msgLower, "brings") or msgcontains(msgLower, "traz") then
         if playerVocation ~= narutoVocationId then
             npcHandler:say(messages[currentLang].help, cid)
@@ -186,7 +186,7 @@ local function creatureSayCallback(cid, type, msg)
             narutoJutsu = 0
         end
         
-        -- Determinar qual é o próximo jutsu baseado no storage
+        -- Determine which is the next jutsu based on storage
         if narutoJutsu == 0 then
             if player:getLevel() < 40 then
                 npcHandler:say(messages[currentLang].noLvlQuest1, cid)
