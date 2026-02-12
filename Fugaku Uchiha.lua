@@ -16,7 +16,7 @@ local lang = {}
 -- Storage = 8: Completed Kage's quest
 -- Storage = 9: Learned Amaterasu (lvl 150 + Mangekyou)
 
--- Rank ranges: E=0-20, D=21-40, C=41-60, B=61-80, A=81-100, S=101+
+-- Rank ranges: E=0-49, D=50-99, C=100-249, B=250-499, A=500-699, S=700+
 -- Graduation values: Academy Student=0, Gennin=1, Chunnin=2, Jounnin=3 (NOT YET IMPLEMENTED)
 
 local UCHIHA_JUTSU_STORAGE = 70002
@@ -25,11 +25,11 @@ local GRADUATION_STORAGE = 5400
 
 -- Function to get rank level from rank points
 local function getRankLevel(rankPoints)
-    if rankPoints >= 101 then return 5 end  -- Rank S
-    if rankPoints >= 81 then return 4 end   -- Rank A
-    if rankPoints >= 61 then return 3 end   -- Rank B
-    if rankPoints >= 41 then return 2 end   -- Rank C
-    if rankPoints >= 21 then return 1 end   -- Rank D
+    if rankPoints >= 700 then return 5 end  -- Rank S
+    if rankPoints >= 500 then return 4 end  -- Rank A
+    if rankPoints >= 250 then return 3 end  -- Rank B
+    if rankPoints >= 100 then return 2 end  -- Rank C
+    if rankPoints >= 50 then return 1 end   -- Rank D
     return 0  -- Rank E
 end
 
@@ -123,8 +123,8 @@ local messages = {
 }
 
 local validWords = {
-    ["pt"] = {"ajudar", "uchiha", "tornar", "fazer parte", "traz", "aprender chidori", "despertar sharingan", "capturar orochimaru", "ajudar o kage"},
-    ["en"] = {"help", "uchiha", "become", "join", "brings", "learn chidori", "awaken sharingan", "capture orochimaru", "kage's request"}
+    ["pt"] = {"ajudar", "uchiha", "tornar", "fazer parte", "sim", "traz", "aprender chidori", "despertar sharingan", "capturar orochimaru", "ajudar o kage"},
+    ["en"] = {"help", "uchiha", "become", "join", "yes", "brings", "learn chidori", "awaken sharingan", "capture orochimaru", "kage's request"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -173,7 +173,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Confirmation flow
-    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "tornar") or msgcontains(msgLower, "become")) then
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "tornar") or msgcontains(msgLower, "become") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) then
         if player:getLevel() < 5 then
             npcHandler:say(messages[currentLang].noLvl, cid)
             npcHandler.topic[cid] = 0
@@ -183,7 +183,7 @@ local function creatureSayCallback(cid, type, msg)
         npcHandler:say(messages[currentLang].confirm, cid)
         npcHandler.topic[cid] = 2
         return true
-    elseif npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "fazer parte") or msgcontains(msgLower, "join")) then
+    elseif npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "fazer parte") or msgcontains(msgLower, "join") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) then
         player:setVocation(Vocation(uchihaVocationId))
         player:save()
         player:setOutfit({lookType = 390})
@@ -319,7 +319,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Learn Chidori
-    if msgcontains(msgLower, "learn chidori") or msgcontains(msgLower, "aprender chidori") then
+    if msgcontains(msgLower, "learn chidori") or msgcontains(msgLower, "aprender chidori") or ((msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 10) then
         local uchihaJutsu = player:getStorageValue(UCHIHA_JUTSU_STORAGE)
         if uchihaJutsu == -1 then
             uchihaJutsu = 0
@@ -358,7 +358,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Awaken Sharingan
-    if msgcontains(msgLower, "awaken your sharingan") or msgcontains(msgLower, "despertar sharingan") then
+    if msgcontains(msgLower, "awaken your sharingan") or msgcontains(msgLower, "despertar sharingan") or ((msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 20) then
         local uchihaJutsu = player:getStorageValue(UCHIHA_JUTSU_STORAGE)
         if uchihaJutsu == -1 then
             uchihaJutsu = 0
@@ -401,7 +401,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Capture Orochimaru
-    if msgcontains(msgLower, "capture orochimaru") or msgcontains(msgLower, "capturar orochimaru") then
+    if msgcontains(msgLower, "capture orochimaru") or msgcontains(msgLower, "capturar orochimaru") or ((msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 30) then
         local uchihaJutsu = player:getStorageValue(UCHIHA_JUTSU_STORAGE)
         if uchihaJutsu == -1 then
             uchihaJutsu = 0
@@ -444,7 +444,7 @@ local function creatureSayCallback(cid, type, msg)
     end
 
     -- Kage's Request
-    if msgcontains(msgLower, "kage's request") or msgcontains(msgLower, "ajudar o kage") then
+    if msgcontains(msgLower, "kage's request") or msgcontains(msgLower, "ajudar o kage") or ((msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 40) then
         local uchihaJutsu = player:getStorageValue(UCHIHA_JUTSU_STORAGE)
         if uchihaJutsu == -1 then
             uchihaJutsu = 0

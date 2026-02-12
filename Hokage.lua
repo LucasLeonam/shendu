@@ -60,8 +60,8 @@ local messages = {
 }
 
 local validWords = {
-    ["pt"] = {"assunto delicado", "verdade", "descobrir a verdade", "pronto para a missão", "documentos", "testemunha", "mangekyou sharingan"},
-    ["en"] = {"sensitive matter", "truth", "uncover the truth", "ready for the mission", "documents", "witness", "mangekyou sharingan"}
+    ["pt"] = {"assunto delicado", "verdade", "descobrir a verdade", "sim", "pronto para a missão", "documentos", "testemunha", "mangekyou sharingan"},
+    ["en"] = {"sensitive matter", "truth", "uncover the truth", "yes", "ready for the mission", "documents", "witness", "mangekyou sharingan"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -127,13 +127,13 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
     
-    if (msgcontains(msgLower, "descobrir a verdade") or msgcontains(msgLower, "uncover the truth")) and npcHandler.topic[cid] == 2 then
+    if (msgcontains(msgLower, "descobrir a verdade") or msgcontains(msgLower, "uncover the truth") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 2 then
         npcHandler:say(messages[currentLang].accept, cid)
         npcHandler.topic[cid] = 3
         return true
     end
     
-    if (msgcontains(msgLower, "pronto para a missão") or msgcontains(msgLower, "ready for the mission")) and npcHandler.topic[cid] == 3 then
+    if (msgcontains(msgLower, "pronto para a missão") or msgcontains(msgLower, "ready for the mission") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 3 then
         npcHandler:say(messages[currentLang].mission, cid)
         -- Here you would implement the teleport to the ANBU archive or give a quest item
         npcHandler:releaseFocus(cid)

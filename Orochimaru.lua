@@ -63,8 +63,8 @@ local messages = {
 }
 
 local validWords = {
-    ["pt"] = {"capturar", "lutar", "pronto para lutar", "semente", "verdade", "presente", "escuridão"},
-    ["en"] = {"capture", "fight", "ready to fight", "seed", "truth", "gift", "darkness"}
+    ["pt"] = {"capturar", "lutar", "pronto para lutar", "sim", "semente", "verdade", "presente", "escuridão"},
+    ["en"] = {"capture", "fight", "ready to fight", "yes", "seed", "truth", "gift", "darkness"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -120,13 +120,13 @@ local function creatureSayCallback(cid, type, msg)
         return true
     end
     
-    if (msgcontains(msgLower, "lutar") or msgcontains(msgLower, "fight")) and npcHandler.topic[cid] == 1 then
+    if (msgcontains(msgLower, "lutar") or msgcontains(msgLower, "fight") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 1 then
         npcHandler:say(messages[currentLang].beforeBattle, cid)
         npcHandler.topic[cid] = 2
         return true
     end
     
-    if (msgcontains(msgLower, "pronto para lutar") or msgcontains(msgLower, "ready to fight")) and npcHandler.topic[cid] == 2 then
+    if (msgcontains(msgLower, "pronto para lutar") or msgcontains(msgLower, "ready to fight") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and npcHandler.topic[cid] == 2 then
         -- Here you would implement the fight with Orochimaru
         -- For now, simulates that the player won
         npcHandler:say(messages[currentLang].defeat, cid)
