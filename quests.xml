@@ -25,7 +25,6 @@
 			<missionstate id="5" description="Example description 2" />
 		</mission>
 	</quest>
-<<<<<<< HEAD
 	
 	<!-- ============================================ -->
 	<!-- UCHIHA CLAN QUEST LINE - Storage: 70002      -->
@@ -66,6 +65,4 @@
 		</mission>
 		
 	</quest>
-=======
->>>>>>> ec9a11ac063f6119d9c3bcdd3acef082d2beafbb
 </quests>
