@@ -73,17 +73,11 @@ local function creatureSayCallback(cid, type, msg)
     local currentLang = npcHandler.languages[cid] or "pt"
     
     npcHandler:addFocus(cid)
-    
-    -- ============================================
-    -- GENERIC GREETING (FOR ALL PLAYERS)
-    -- ============================================
+
     if msgcontains(msgLower, "hi") or msgcontains(msgLower, "oi") then
         npcHandler:say(messages[currentLang].greet, cid)
         return true
     end
-    -- ============================================
-    -- END GENERIC GREETING
-    -- ============================================
     
     -- Block messages outside the defined language
     local isValid = false
@@ -98,7 +92,7 @@ local function creatureSayCallback(cid, type, msg)
     end
     
     -- ============================================
-    -- UCHIHA CLAN QUEST FLOW (vocationId == 9)
+    -- UCHIHA CLAN QUEST FLOW
     -- ============================================
     if player:getVocation():getId() == 9 then
         local uchihaJutsu = player:getStorageValue(UCHIHA_JUTSU_STORAGE)

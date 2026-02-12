@@ -71,7 +71,6 @@ local function creatureSayCallback(cid, type, msg)
     
     npcHandler:addFocus(cid)
     
-    -- Generic greeting for everyone
     if msgcontains(msgLower, "oi") or msgcontains(msgLower, "olá") or msgcontains(msgLower, "hi") or msgcontains(msgLower, "hello") then
         npcHandler:say(messages[currentLang].greet, cid)
         return true
