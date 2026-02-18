@@ -4,17 +4,20 @@ NpcSystem.parseParameters(npcHandler)
 
 local lang = {}
 
--- Unique storage to track learned jutsus
+-- Unique storage to track Uchiha clan progression
 -- Storage = 0: Learned Katon Goukakyuu (upon becoming Uchiha)
--- Storage = 1: Received quest to learn Chidori (lvl 40)
+-- Storage = 1: Received quest with Kakashi (Chidori trial)
 -- Storage = 2: Completed Kakashi's quest
--- Storage = 3: Learned Sharingan (lvl 80)
--- Storage = 4: Received quest to learn Kirin (lvl 120 + graduated)
--- Storage = 5: Completed Orochimaru's quest
--- Storage = 6: Learned Kirin (lvl 120 + graduated)
--- Storage = 7: Received quest to learn Amaterasu (lvl 150)
--- Storage = 8: Completed Kage's quest
--- Storage = 9: Learned Amaterasu (lvl 150 + Mangekyou)
+-- Storage = 3: Learned Chidori
+-- Storage = 4: Received quest for Sharingan awakening (Uchiha ruins)
+-- Storage = 5: Completed ruins quest
+-- Storage = 6: Learned Sharingan
+-- Storage = 7: Received quest to capture Orochimaru
+-- Storage = 8: Completed Orochimaru's quest
+-- Storage = 9: Learned Kirin
+-- Storage = 10: Received Kage's request
+-- Storage = 11: Completed Kage's quest
+-- Storage = 12: Learned Amaterasu
 
 -- Rank ranges: E=0-49, D=50-99, C=100-249, B=250-499, A=500-699, S=700+
 -- Graduation values: Academy Student=0, Gennin=1, Chunnin=2, Jounnin=3 (NOT YET IMPLEMENTED)
