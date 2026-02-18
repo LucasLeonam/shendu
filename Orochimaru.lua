@@ -151,7 +151,7 @@ local function creatureSayCallback(cid, type, msg)
     if (msgcontains(msgLower, "presente") or msgcontains(msgLower, "gift")) and npcHandler.topic[cid] == 6 then
         npcHandler:say(messages[currentLang].curseMark, cid)
         -- Here you could add a visual effect or temporary debuff
-        player:getPosition():sendMagicEffect(CONST_ME_MORTAREA)
+        -- player:getPosition():sendMagicEffect(CONST_ME_MORTAREA)
         npcHandler.topic[cid] = 7
         
         addEvent(function()
@@ -175,7 +175,6 @@ local function creatureSayCallback(cid, type, msg)
         player:removeItem(10549, 1)
         player:setStorageValue(UCHIHA_JUTSU_STORAGE, 8) -- Completed encounter with Orochimaru
         player:save()
-        player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
         -- Here you would make Orochimaru disappear/teleport and the player be expelled from the hideout
         npcHandler:releaseFocus(cid)
         npcHandler.topic[cid] = 0

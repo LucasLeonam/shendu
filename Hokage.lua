@@ -162,7 +162,6 @@ local function creatureSayCallback(cid, type, msg)
         addEvent(function()
             if Player(cid) then
                 npcHandler:say(messages[currentLang].awakening, cid)
-                player:getPosition():sendMagicEffect(CONST_ME_FIREATTACK) -- Visual effect of awakening
                 npcHandler.topic[cid] = 7
             end
         end, 4000)
