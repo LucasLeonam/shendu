@@ -101,13 +101,13 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Check if has the quest
-        if uchihaJutsu < 7 then
+        if uchihaJutsu < 9 then
         npcHandler:say(messages[currentLang].noQuest, cid)
         npcHandler:releaseFocus(cid)
         return true
     end
     
-    -- Quest flow (Storage 7)
+    -- Quest flow (Storage 9)
     if msgcontains(msgLower, "capturar") or msgcontains(msgLower, "capture") then
         npcHandler:say(messages[currentLang].hasQuest, cid)
         npcHandler.topic[cid] = 1
@@ -132,7 +132,7 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(string.gsub(messages[currentLang].manipulation, "|PLAYERNAME|", player:getName()), cid)
                 npcHandler.topic[cid] = 4
             end
-        end, 3000)
+        end, 1500)
         return true
     end
     
@@ -173,7 +173,7 @@ local function creatureSayCallback(cid, type, msg)
         
         -- Remove the ryo and complete the mission
         player:removeItem(10549, 1)
-        player:setStorageValue(UCHIHA_JUTSU_STORAGE, 8) -- Completed encounter with Orochimaru
+        player:setStorageValue(UCHIHA_JUTSU_STORAGE, 10) -- Completed encounter with Orochimaru
         player:save()
         -- Here you would make Orochimaru disappear/teleport and the player be expelled from the hideout
         npcHandler:releaseFocus(cid)

@@ -21,16 +21,16 @@ local messages = {
         hasQuest = "Ah, |PLAYERNAME|. Fugaku mentioned you might come. I have a {sensitive matter} that requires your attention.",
         matter = "It's about the Uchiha massacre. For years, we've been told it was the work of a single rogue ninja. But I've uncovered evidence that suggests otherwise. The {truth} is far more complex.",
         truth = "I need someone I can trust to investigate this. Someone from the Uchiha clan who deserves to know what really happened. Are you willing to {uncover the truth}?",
-        accept = "Good. I'll need you to infiltrate an old ANBU archive. It's heavily guarded, but I'll give you clearance. Inside, you'll find classified documents about the night of the massacre. Retrieve them and bring them back to me. Tell me when you're {ready for the mission}.",
-        mission = "The archive is hidden beneath the village. Here are your clearance codes. Be careful — not everyone in ANBU knows about this investigation. If you're caught, I can't protect you. Now go.",
-        incomplete = "You haven't retrieved the documents yet. Return to the ANBU archive and complete your mission.",
-        retrievedDocs = "You've returned. Do you have the {documents}?",
+        accept = "Good. I'll need you to return to the Uchiha ruins and see if, with your new eyes, you discover something new. Tell me when you're {ready for the mission}.",
+        mission = "Look for documents and use your Sharingan to see echoes of the past, but be aware, I would expect some resistance from the ruins, now that you have your crimson eyes. Return to me when you have new information about the massacre.",
+        incomplete = "You don't appear to have new information from the Uchiha ruins. Please continue your investigation.",
+        retrievedDocs = "You've returned. So, what you {learned}?",
         documents = "Let me see them... Yes, these are the ones. *reads carefully* Just as I suspected. The massacre wasn't a crime of passion. It was... an order. A village-sanctioned execution.",
         reveal = "The Uchiha clan was planning a coup d'état. The village elders ordered the massacre to prevent civil war. And the one who carried it out... was ordered by the village itself. But there's more... There was a {witness}.",
         witness = "Your own clansman. Someone who survived that night and chose to protect the village's secret. Someone who carries the burden of that choice even now. I cannot tell you who without their permission, but... you deserve to know this much.",
-        emotional = "*watches as the weight of the revelation sinks in* I know this is difficult, |PLAYERNAME|. The truth often is. But you needed to know. Your clan wasn't destroyed out of madness — it was destroyed to save the village from itself.",
+        emotional = "I know this is difficult, |PLAYERNAME|. The truth often is. But you needed to know. Your clan wasn't destroyed out of madness — it was destroyed to save the village from itself.",
         awakening = "This knowledge you now carry will shape your future. Whether your eyes awaken further is your journey to take. Use what you've learned wisely.",
-        complete = "Return to Fugaku. Tell him everything you've learned here. He may recognize if your eyes have evolved further. And |PLAYERNAME|... I'm sorry. For what happened to your clan. For what the village did.",
+        complete = "Return to Fugaku. Tell him everything you've learned here. And |PLAYERNAME|... I'm sorry. For what happened to your clan. For what the village did.",
         alreadyCompleted = "You've already learned the truth about the Uchiha massacre. There's nothing more I can tell you about this matter. Focus on your future now.",
     },
     
@@ -44,10 +44,10 @@ local messages = {
         hasQuest = "Ah, |PLAYERNAME|. Fugaku mencionou que você poderia vir. Tenho um {assunto delicado} que requer sua atenção.",
         matter = "É sobre o massacre Uchiha. Por anos, nos disseram que foi obra de um único ninja renegado. Mas descobri evidências que sugerem o contrário. A {verdade} é muito mais complexa.",
         truth = "Preciso de alguém em quem possa confiar para investigar isso. Alguém do clã Uchiha que mereça saber o que realmente aconteceu. Você está disposto a {descobrir a verdade}?",
-        accept = "Bom. Vou precisar que você infiltre um antigo arquivo ANBU. É fortemente guardado, mas darei autorização. Lá dentro, você encontrará documentos classificados sobre a noite do massacre. Recupere-os e traga de volta. Me diga quando estiver {pronto para a missão}.",
-        mission = "O arquivo está escondido embaixo da vila. Aqui estão seus códigos de acesso. Cuidado — nem todos na ANBU sabem desta investigação. Se for pego, não posso te proteger. Agora vá.",
-        incomplete = "Você ainda não recuperou os documentos. Retorne ao arquivo ANBU e complete sua missão.",
-        retrievedDocs = "Você voltou. Tem os {documentos}?",
+        accept = "Bom. Vou precisar que você retorne às ruínas Uchiha e veja se, com seus novos olhos, descobre algo novo. Me diga quando estiver {pronto para a missão}.",
+        mission = "Procure por documentos e use seu Sharingan para ver ecos do passado, mas esteja ciente de que espero alguma resistência das ruínas, agora que você possui seus olhos carmesim. Retorne a mim quando tiver novas informações sobre o massacre.",
+        incomplete = "Você não parece ter novas informações das ruínas Uchiha. Por favor, continue sua investigação.",
+        retrievedDocs = "Você voltou. Então, o que você {aprendeu}?",
         documents = "Deixe-me ver... Sim, são estes. *lê cuidadosamente* Como eu suspeitava. O massacre não foi um crime passional. Foi... uma ordem. Uma execução sancionada pela vila.",
         reveal = "O clã Uchiha estava planejando um golpe de estado. Os anciãos da vila ordenaram o massacre para prevenir uma guerra civil. E quem executou... foi ordenado pela própria vila. Mas há mais... Havia uma {testemunha}.",
         witness = "Seu próprio membro do clã. Alguém que sobreviveu àquela noite e escolheu proteger o segredo da vila. Alguém que carrega o fardo dessa escolha até hoje. Não posso te dizer quem sem a permissão dele, mas... você merece saber ao menos isso.",
@@ -60,8 +60,8 @@ local messages = {
 }
 
 local validWords = {
-    ["pt"] = {"assunto delicado", "verdade", "descobrir a verdade", "sim", "pronto para a missão", "documentos", "testemunha", "mangekyou sharingan"},
-    ["en"] = {"sensitive matter", "truth", "uncover the truth", "yes", "ready for the mission", "documents", "witness", "mangekyou sharingan"}
+    ["pt"] = {"assunto delicado", "verdade", "descobrir a verdade", "sim", "pronto para a missão", "aprendeu", "testemunha", "mangekyou sharingan"},
+    ["en"] = {"sensitive matter", "truth", "uncover the truth", "yes", "ready for the mission", "learned", "witness", "mangekyou sharingan"}
 }
 
 local function creatureSayCallback(cid, type, msg)
@@ -101,19 +101,19 @@ local function creatureSayCallback(cid, type, msg)
     end
     
     -- Check if has the quest
-    if uchihaJutsu < 10 then
+    if uchihaJutsu < 12 then
         npcHandler:say(messages[currentLang].noQuest, cid)
         npcHandler:releaseFocus(cid)
         return true
     end
     
-    if uchihaJutsu >= 11 then
+    if uchihaJutsu >= 14 then
         npcHandler:say(messages[currentLang].alreadyCompleted, cid)
         npcHandler:releaseFocus(cid)
         return true
     end
     
-    -- Quest flow (Storage 10)
+    -- Quest flow (Storage 12)
     if msgcontains(msgLower, "assunto delicado") or msgcontains(msgLower, "sensitive matter") then
         npcHandler:say(messages[currentLang].matter, cid)
         npcHandler.topic[cid] = 1
@@ -140,7 +140,7 @@ local function creatureSayCallback(cid, type, msg)
     end
     
     -- When returns with the documents (you would need to check if has a specific item)
-    if msgcontains(msgLower, "documentos") or msgcontains(msgLower, "documents") then
+    if msgcontains(msgLower, "aprendeu") or msgcontains(msgLower, "learned") then
         -- Here you would check if the player has the documents item
         -- For now, let's simulate that they have it
         npcHandler:say(messages[currentLang].documents, cid)
@@ -164,7 +164,7 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].awakening, cid)
                 npcHandler.topic[cid] = 7
             end
-        end, 4000)
+        end, 1500)
         return true
     end
     
@@ -179,7 +179,7 @@ local function creatureSayCallback(cid, type, msg)
         -- Remove the ryo and complete the mission
         player:removeItem(10549, 1)
         npcHandler:say(string.gsub(messages[currentLang].complete, "|PLAYERNAME|", player:getName()), cid)
-        player:setStorageValue(UCHIHA_JUTSU_STORAGE, 11) -- Completed Kage mission
+        player:setStorageValue(UCHIHA_JUTSU_STORAGE, 14) -- Completed Kage mission
         player:save()
         npcHandler:releaseFocus(cid)
         npcHandler.topic[cid] = 0

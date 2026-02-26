@@ -5,19 +5,21 @@ NpcSystem.parseParameters(npcHandler)
 local lang = {}
 
 -- Unique storage to track Uchiha clan progression
--- Storage = 0: Learned Katon Goukakyuu (upon becoming Uchiha)
--- Storage = 1: Received quest with Kakashi (Chidori trial)
--- Storage = 2: Completed Kakashi's quest
--- Storage = 3: Learned Chidori
--- Storage = 4: Received quest for Sharingan awakening (Uchiha ruins)
--- Storage = 5: Completed ruins quest
--- Storage = 6: Learned Sharingan
--- Storage = 7: Received quest to capture Orochimaru
--- Storage = 8: Completed Orochimaru's quest
--- Storage = 9: Learned Kirin
--- Storage = 10: Received Kage's request
--- Storage = 11: Completed Kage's quest
--- Storage = 12: Learned Amaterasu
+-- Storage = 1: Learned Katon Goukakyuu (upon becoming Uchiha)
+-- Storage = 2: Received quest to talk with Kakashi (Lvl 40 + Raiton + Rank C - Chidori)
+-- Storage = 3: Received quest from Kakashi
+-- Storage = 4: Completed Kakashi's quest
+-- Storage = 5: Learned Chidori
+-- Storage = 6: Received quest from Fugaku (Lvl 80 + Chunnin + Rank B - Sharingan)
+-- Storage = 7: Completed Fugaku's quest
+-- Storage = 8: Learned Sharingan
+-- Storage = 9: Received quest to capture Orochimaru (Lvl 120 + Jounnin + Rank A - Kirin)
+-- Storage = 10: Completed Orochimaru's quest
+-- Storage = 11: Learned Kirin
+-- Storage = 12: Received quest to talk with Hokage (Lvl 150 + Jounnin + Rank S - Amaterasu)
+-- Storage = 13: Received quest from Hokage 
+-- Storage = 14: Completed Kage's quest
+-- Storage = 15: Learned Amaterasu
 
 -- Rank ranges: E=0-49, D=50-99, C=100-249, B=250-499, A=500-699, S=700+
 -- Graduation values: Academy Student=0, Gennin=1, Chunnin=2, Jounnin=3 (NOT YET IMPLEMENTED)
@@ -52,25 +54,29 @@ local messages = {
         done = "Very well. From this moment on, you carry the Uchiha name. Do not dishonor it. I will grant you the fire technique {Katon Goukakyuu}. Master it. You will need it.",
         isUchiha = "You return, |PLAYERNAME|. What brings you here?",
         hasOtherClan = "You already belong to another clan. I will not interfere with divided loyalty.",
-
+        
+        -- Chidori
         noLvlQuest1 = "You lack the necessary experience. Reach at least {level 40}, master the {Raiton} element, and achieve {Rank C} before seeking further training.",
         quest1 = "You have grown stronger. It is time you learned a technique worthy of the Uchiha. Chidori. A lightning blade formed through raiton chakra. Are you prepared to {learn Chidori}?",
         quest1Requirements = "I will not be the one to teach it. The technique belongs to the one known as the {Copy Ninja} — Hatake Kakashi. Seek him. Learn from him. Return only after you succeed. A true shinobi earns his power.",
         quest1Incomplete = "You have not yet mastered Chidori. I expect results, not attempts. Go talk to Kakashi and complete your task.",
         quest1Done = "So, you learned Chidori. Kakashi sealed it for your safety — a cautious decision. I will remove the seal. There. The technique is now fully yours. Use it with discipline.",
 
+        -- Sharingan
         noLvlQuest2 = "Do not rush your growth. Reach at least {level 80}, achieve the rank of {Chunnin}, and attain {Rank B} before undertaking what comes next.",
         quest2 = "|PLAYERNAME|, I have a task for you. Return to the ruins of the Uchiha clan. Search for what remains of our past. There are truths buried there. Perhaps, under the right circumstances, you may even {awaken your Sharingan}.",
         quest2Requirements = "The ruins are sealed to outsiders. I have granted you chakra access. Do not waste this opportunity. Observe carefully. What you discover may change you.",
         quest2Incomplete = "Hmm. Care to tell me why you haven't finished the task I directly asked you to do? I will tell you again... Here in the Uchiha clan, we don't accept failures. Stop wasting time and go to the ruins at once.",
         quest2Done = "You survived the echoes of the ruins... and awakened your Sharingan in the process. Good. But understand this — awakening it is only the first step. Mastery requires far more than emotion.",
 
+        -- Kirin
         noLvlQuest3 = "|PLAYERNAME|, I have a task to assign you, but this mission demands more than ambition. Reach {level 120}, achieve {Jounnin} status, and attain {Rank A}. Return to me when you achieve this.",
         quest3 = "The Kage has issued a direct order. Orochimaru — one of the Legendary Sannin — must be captured alive. He possesses knowledge we require. Do you believe you can {capture Orochimaru}?",
         quest3Requirements = "He is dangerous and deceptive. Do not underestimate him. Our intel suggests he hides between our village and the Sound Village. Locate him. Capture him. Deliver him to prison. Failure is not acceptable.",
         quest3Incomplete = "The task remains unfinished, it seems. Prepare yourself properly, but do not delay unnecessarily. Orochimaru will not remain in one place forever.",
         quest3Done = "You failed to capture him… and allowed yourself to be manipulated. You have brought disgrace upon the Uchiha name. Learn from this. I will not tolerate such weakness again.",
 
+        -- Amaterasu
         noLvlQuest4 = "|PLAYERNAME|, after your last failure, I expected more. Reach {level 150}, maintain {Jounnin} status and achieve {Rank S}. Then return to me.",
         quest4 = "The Kage believes the truth behind our clan's massacre is not as simple as we were told. He has requested your presence. Go to his office and hear the {Kage's request}.",
         quest4Requirements = "Assist him fully. Earn his confidence. When you have uncovered what he seeks, return to me with every detail.",
@@ -215,7 +221,7 @@ local function creatureSayCallback(cid, type, msg)
         
         -- Determine which is the next jutsu based on storage
         -- Quest 1: Chidori (lvl 40 + Raiton + Rank C)
-        if uchihaJutsu == 0 then
+        if uchihaJutsu == 1 then
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerRank == -1 then playerRank = 0 end
             
@@ -226,19 +232,19 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].quest1, cid)
                 npcHandler.topic[cid] = 10
             end
-        elseif uchihaJutsu == 1 then
-            npcHandler:say(messages[currentLang].quest1Incomplete, cid)
         elseif uchihaJutsu == 2 then
+            npcHandler:say(messages[currentLang].quest1Incomplete, cid)
+        elseif uchihaJutsu == 4 then
             -- Player completed mission with Kakashi, now Fugaku delivers Chidori
             npcHandler:say(messages[currentLang].quest1Done, cid)
             player:learnSpell("Chidori")
             player:getPosition():sendMagicEffect(478)
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 3) -- Learned Chidori
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 5) -- Learned Chidori
             player:save()
             npcHandler:releaseFocus(cid)
             
         -- Quest 2: Sharingan (lvl 80 + Chunnin + Rank B)
-        elseif uchihaJutsu == 3 then
+        elseif uchihaJutsu == 5 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -252,19 +258,19 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].quest2, cid)
                 npcHandler.topic[cid] = 20
             end
-        elseif uchihaJutsu == 4 then
+        elseif uchihaJutsu == 6 then
             npcHandler:say(messages[currentLang].quest2Incomplete, cid)
-        elseif uchihaJutsu == 5 then
+        elseif uchihaJutsu == 7 then
             -- Player completed mission in the ruins, now Fugaku delivers Sharingan
             npcHandler:say(messages[currentLang].quest2Done, cid)
             player:learnSpell("Sharingan")
             player:getPosition():sendMagicEffect(478)
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 6) -- Learned Sharingan
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 8) -- Learned Sharingan
             player:save()
             npcHandler:releaseFocus(cid)
             
         -- Quest 3: Kirin (lvl 120 + Jounnin + Rank A)
-        elseif uchihaJutsu == 6 then
+        elseif uchihaJutsu == 8 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -278,19 +284,19 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].quest3, cid)
                 npcHandler.topic[cid] = 30
             end
-        elseif uchihaJutsu == 7 then
+        elseif uchihaJutsu == 9 then
             npcHandler:say(messages[currentLang].quest3Incomplete, cid)
-        elseif uchihaJutsu == 8 then
+        elseif uchihaJutsu == 10 then
             -- Player completed mission with Orochimaru, now Fugaku delivers Kirin
             npcHandler:say(messages[currentLang].quest3Done, cid)
             player:learnSpell("Kirin")
             player:getPosition():sendMagicEffect(478)
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 9) -- Learned Kirin
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 11) -- Learned Kirin
             player:save()
             npcHandler:releaseFocus(cid)
             
         -- Quest 4: Amaterasu (lvl 150 + Jounnin + Rank S + Mangekyou)
-        elseif uchihaJutsu == 9 then
+        elseif uchihaJutsu == 11 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -305,14 +311,14 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].quest4, cid)
                 npcHandler.topic[cid] = 40
             end
-        elseif uchihaJutsu == 10 then
+        elseif uchihaJutsu == 12 then
             npcHandler:say(messages[currentLang].quest4Incomplete, cid)
-        elseif uchihaJutsu == 11 then
+        elseif uchihaJutsu == 14 then
             -- Player completed mission with the Kage, now Fugaku delivers Amaterasu
             npcHandler:say(messages[currentLang].quest4Done, cid)
             player:learnSpell("Amaterasu")
             player:getPosition():sendMagicEffect(478)
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 12) -- Learned Amaterasu
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 15) -- Learned Amaterasu
             player:save()
             npcHandler:releaseFocus(cid)
         else
@@ -329,14 +335,14 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Already learned Chidori
-        if uchihaJutsu >= 3 then
+        if uchihaJutsu >= 5 then
             npcHandler:say(messages[currentLang].alreadyLearnedChidori, cid)
             npcHandler.topic[cid] = 0
             return true
         end
         
-        -- Must be in the correct storage (0) and correct topic (10)
-        if npcHandler.topic[cid] == 10 and uchihaJutsu == 0 then
+        -- Must be in the correct storage (1) and correct topic (10)
+        if npcHandler.topic[cid] == 10 and uchihaJutsu == 1 then
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerRank == -1 then playerRank = 0 end
             
@@ -348,7 +354,7 @@ local function creatureSayCallback(cid, type, msg)
             end
             
             -- Accept the quest and send to Kakashi
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 1) -- Took the mission
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 2) -- Took the mission
             player:save()
             npcHandler:say(messages[currentLang].quest1Requirements, cid)
             npcHandler:releaseFocus(cid)
@@ -368,14 +374,14 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Already learned Sharingan
-        if uchihaJutsu >= 6 then
+        if uchihaJutsu >= 8 then
             npcHandler:say(messages[currentLang].alreadyLearnedSharingan, cid)
             npcHandler.topic[cid] = 0
             return true
         end
         
-        -- Must be in the correct storage (3) and correct topic (20)
-        if npcHandler.topic[cid] == 20 and uchihaJutsu == 3 then
+        -- Must be in the correct storage (5) and correct topic (20)
+        if npcHandler.topic[cid] == 20 and uchihaJutsu == 5 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -391,7 +397,7 @@ local function creatureSayCallback(cid, type, msg)
             end
             
             -- Accept the quest and send to the ruins
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 4) -- Took the ruins mission
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 6) -- Took the ruins mission
             player:save()
             npcHandler:say(messages[currentLang].quest2Requirements, cid)
             npcHandler:releaseFocus(cid)
@@ -411,14 +417,14 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Already learned Kirin
-        if uchihaJutsu >= 9 then
+        if uchihaJutsu >= 11 then
             npcHandler:say(messages[currentLang].alreadyLearnedKirin, cid)
             npcHandler.topic[cid] = 0
             return true
         end
         
-        -- Must be in the correct storage (6) and correct topic (30)
-        if npcHandler.topic[cid] == 30 and uchihaJutsu == 6 then
+        -- Must be in the correct storage (8) and correct topic (30)
+        if npcHandler.topic[cid] == 30 and uchihaJutsu == 8 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -434,7 +440,7 @@ local function creatureSayCallback(cid, type, msg)
             end
             
             -- Accept the quest and send to capture Orochimaru
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 7) -- Took the mission to capture Orochimaru
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 9) -- Took the mission to capture Orochimaru
             player:save()
             npcHandler:say(messages[currentLang].quest3Requirements, cid)
             npcHandler:releaseFocus(cid)
@@ -454,14 +460,14 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Already learned Amaterasu
-        if uchihaJutsu >= 12 then
+        if uchihaJutsu >= 15 then
             npcHandler:say(messages[currentLang].alreadyLearnedAmaterasu, cid)
             npcHandler.topic[cid] = 0
             return true
         end
         
-        -- Must be in the correct storage (9) and correct topic (40)
-        if npcHandler.topic[cid] == 40 and uchihaJutsu == 9 then
+        -- Must be in the correct storage (11) and correct topic (40)
+        if npcHandler.topic[cid] == 40 and uchihaJutsu == 11 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerGraduation == -1 then playerGraduation = 0 end
@@ -477,7 +483,7 @@ local function creatureSayCallback(cid, type, msg)
             end
             
             -- Accept the quest and send to the Kage
-            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 10) -- Took the Kage mission
+            player:setStorageValue(UCHIHA_JUTSU_STORAGE, 12) -- Took the Kage mission
             player:save()
             npcHandler:say(messages[currentLang].quest4Requirements, cid)
             npcHandler:releaseFocus(cid)
