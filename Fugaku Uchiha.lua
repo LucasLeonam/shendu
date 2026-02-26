@@ -220,7 +220,7 @@ local function creatureSayCallback(cid, type, msg)
         end
         
         -- Determine which is the next jutsu based on storage
-        -- Quest 1: Chidori (lvl 40 + Raiton + Rank C)
+        -- Uchiha Way 1: Chidori (lvl 40 + Raiton + Rank C)
         if uchihaJutsu == 1 then
             local playerRank = player:getStorageValue(RANK_STORAGE)
             if playerRank == -1 then playerRank = 0 end
@@ -230,6 +230,7 @@ local function creatureSayCallback(cid, type, msg)
             else
                 -- TODO: Add Raiton element verification when element storage is implemented
                 npcHandler:say(messages[currentLang].quest1, cid)
+                player:getPosition():sendMagicEffect(526) -- Start Quest Effect
                 npcHandler.topic[cid] = 10
             end
         elseif uchihaJutsu == 2 then
@@ -243,7 +244,7 @@ local function creatureSayCallback(cid, type, msg)
             player:save()
             npcHandler:releaseFocus(cid)
             
-        -- Quest 2: Sharingan (lvl 80 + Chunnin + Rank B)
+        -- Uchiha Way 2: Sharingan (lvl 80 + Chunnin + Rank B)
         elseif uchihaJutsu == 5 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
@@ -256,6 +257,7 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].noLvlQuest2, cid)
             else
                 npcHandler:say(messages[currentLang].quest2, cid)
+                player:getPosition():sendMagicEffect(526) -- Start Quest Effect
                 npcHandler.topic[cid] = 20
             end
         elseif uchihaJutsu == 6 then
@@ -269,7 +271,7 @@ local function creatureSayCallback(cid, type, msg)
             player:save()
             npcHandler:releaseFocus(cid)
             
-        -- Quest 3: Kirin (lvl 120 + Jounnin + Rank A)
+        -- Uchiha Way 3: Kirin (lvl 120 + Jounnin + Rank A)
         elseif uchihaJutsu == 8 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
@@ -282,6 +284,7 @@ local function creatureSayCallback(cid, type, msg)
                 npcHandler:say(messages[currentLang].noLvlQuest3, cid)
             else
                 npcHandler:say(messages[currentLang].quest3, cid)
+                player:getPosition():sendMagicEffect(526) -- Start Quest Effect
                 npcHandler.topic[cid] = 30
             end
         elseif uchihaJutsu == 9 then
@@ -295,7 +298,7 @@ local function creatureSayCallback(cid, type, msg)
             player:save()
             npcHandler:releaseFocus(cid)
             
-        -- Quest 4: Amaterasu (lvl 150 + Jounnin + Rank S + Mangekyou)
+        -- Uchiha Way 4: Amaterasu (lvl 150 + Jounnin + Rank S + Mangekyou)
         elseif uchihaJutsu == 11 then
             local playerGraduation = player:getStorageValue(GRADUATION_STORAGE)
             local playerRank = player:getStorageValue(RANK_STORAGE)
@@ -309,6 +312,7 @@ local function creatureSayCallback(cid, type, msg)
             else
                 -- TODO: Add Mangekyou Sharingan verification when Mangekyou storage is implemented
                 npcHandler:say(messages[currentLang].quest4, cid)
+                player:getPosition():sendMagicEffect(526) -- Start Quest Effect
                 npcHandler.topic[cid] = 40
             end
         elseif uchihaJutsu == 12 then

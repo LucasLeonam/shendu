@@ -174,6 +174,7 @@ local function creatureSayCallback(cid, type, msg)
         -- Remove the ryo and complete the mission
         player:removeItem(10549, 1)
         player:setStorageValue(UCHIHA_JUTSU_STORAGE, 10) -- Completed encounter with Orochimaru
+        player:getPosition():sendMagicEffect(461) -- QuestLog Update Effect
         player:save()
         -- Here you would make Orochimaru disappear/teleport and the player be expelled from the hideout
         npcHandler:releaseFocus(cid)

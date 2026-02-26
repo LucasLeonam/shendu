@@ -12,11 +12,11 @@ local lang = {}
 -- Storage = 4: Received quest with Tsunade/Medinin (Mission 2)
 -- Storage = 5: Completed Tsunade/Medinin mission
 -- Storage = 6: Learned Ninpou Souzou Saisei
--- Storage = 7: Received quest with Doton Jounnin (Mission 3)
--- Storage = 8: Completed Doton Jounnin mission
+-- Storage = 7: Received quest with Mebuki/Doton Jounnin (Mission 3)
+-- Storage = 8: Completed Mebuki/Doton Jounnin mission
 -- Storage = 9: Learned Sakuraichi
--- Storage = 10: Received final quest from Tsunade (Mission 4)
--- Storage = 11: Completed final frontline mission
+-- Storage = 10: Received quest from Mebuki (Mission 4)
+-- Storage = 11: Completed quest with Mebuki
 -- Storage = 12: Learned Okasho
 
 -- Rank ranges: E=0-49, D=50-99, C=100-249, B=250-499, A=500-699, S=700+
