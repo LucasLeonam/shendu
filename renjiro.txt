@@ -1,0 +1,276 @@
+local keywordHandler = KeywordHandler:new()
+local npcHandler = NpcHandler:new(keywordHandler)
+NpcSystem.parseParameters(npcHandler)
+
+function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
+function onCreatureDisappear(cid)           npcHandler:onCreatureDisappear(cid)         end
+function onCreatureSay(cid, type, msg)      npcHandler:onCreatureSay(cid, type, msg)    end
+function onThink()                          npcHandler:onThink()                        end
+
+local shopModule = ShopModule:new()
+npcHandler:addModule(shopModule)
+
+local sellableItems = {
+    {{'basic kunai'}, 12026, 1, 10, 'basic kunai', renjiroRep},
+    {{'basic armband'}, 12133, 1, 10, 'basic armband', renjiroRep},
+    {{'short ken'}, 11986, 1, 20, 'short ken', renjiroRep},
+    {{'reinforced armband', 'reinforced arm'}, 12099, 1, 20, 'reinforced armband', renjiroRep},
+    {{'assassin blade'}, 11914, 1, 30, 'assassin blade', renjiroRep},
+    {{'twin brothers armband', 'twin brother armband', 'twin brothers arm', 'twin brother arm'}, 12123, 1, 30, 'twin brothers armband', renjiroRep},
+    {{'ken'}, 11962, 1, 40, 'ken', renjiroRep},
+    {{'nunchako'}, 12091, 1, 40, 'nunchako', renjiroRep},
+    {{'rock lee armband', 'rock lee arm'}, 12075, 1, 50, 'rock lee armband', renjiroRep},
+    {{'sakura long gloves', 'sakura gloves', 'sakura long glove', 'sakura glove'}, 12141, 1, 60, 'sakura long gloves', renjiroRep},
+    {{'hiruzen stick'}, 11946, 1, 60, 'hiruzen stick', renjiroRep}
+}
+
+local buyableItemsByReputation = {
+    {0, {'basic kunai'}, 12026, 1, nil, 'basic kunai'},
+    {0, {'basic armband'}, 12133, 1, nil, 'basic armband'},
+    {1, {'short ken'}, 11986, 1, nil, 'short ken'},
+    {1, {'reinforced armband', 'reinforced arm'}, 12099, 1, nil, 'reinforced armband'},
+    {2, {'assassin blade'}, 11914, 1, nil, 'assassin blade'},
+    {2, {'twin brothers armband', 'twin brother armband', 'twin brothers arm', 'twin brother arm'}, 12123, 1, nil, 'twin brothers armband'},
+    {3, {'ken'}, 11962, 1, nil, 'ken'},
+    {3, {'nunchako'}, 12091, 1, nil, 'nunchako'},
+    {4, {'rock lee armband', 'rock lee arm'}, 12075, 1, nil, 'rock lee armband'},
+    {5, {'sakura long gloves', 'sakura gloves', 'sakura long glove', 'sakura glove'}, 12141, 1, nil, 'sakura long gloves'},
+    {5, {'hiruzen stick'}, 11946, 1, nil, 'hiruzen stick'}   
+}
+
+keywordHandler:addKeyword({'stuff'}, StdModule.say, {
+    npcHandler = npcHandler,
+    text = 'Just ask me for a {trade} to see my offers.'
+})
+keywordHandler:addAliasKeyword({'wares'})
+keywordHandler:addAliasKeyword({'offer'})
+
+npcHandler:setCallback(CALLBACK_ONTRADEREQUEST, function(cid)
+    local player = Player(cid)
+    if not player then
+        return false
+    end
+
+    local renjiroRep = player:getStorageValue(NpcStorageReputation.konoha.renjiro)
+
+
+    if renjiroRep < 0 then
+        player:setStorageValue(NpcStorageReputation.konoha.renjiro,0)
+        player:save()
+    end
+
+    -- limpa a shop antes de montar novamente
+    npcHandler.shopItems = {}
+
+    for _, item in ipairs(sellableItems) do
+        shopModule:addSellableItem(item[1], item[2], item[3], item[4], item[5], item[6])
+    end
+
+    for _, item in ipairs(buyableItemsByReputation) do
+        if renjiroRep >= item[1] then
+            shopModule:addBuyableItem(item[2], item[3], item[4], item[5], item[6])
+        end
+    end
+
+    return true
+end)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+local messages = {
+    ["en"] = {
+        greeting = "I'm Renjiro. I'm in charge of Konoha's {hospital} and I {trade} medicine. What do you need?",
+        noRep = "Sorry, but I don't have any task for you at the moment.",
+            
+        talkHospital = 'Here at Konoha\'s hospital, we medical {ninjas} treat the villagers of the village.',
+        help1 = 'I don\'t know you very well, but I\'m in need of some flowers for the creation of medicines. If you help me, I can offer you better products. Do you {accept} to help me?',
+        m1 = 'Alright, I\'ll give you a change, I need 10 Actires flowers, 10 Asleep flowers and 10 Sunny flowers. Talk to me again when you have the flowers.',
+        m1noitem = 'You don\'t have all the flowers I need, come back when you have them.',
+        m1completed = 'Thanks for the flowers, here are some potions for you.',
+
+        start2 = 'Ah, you\'re back [PLAYERNAME]! Could you help me with one more {thing}?',
+        help2 = 'I found a scroll that talked about the medicinal power of Actires, Asleep and Sunny {seeds} in the production of potions. I need 10 of each of these seeds, could you help me?',
+        m2 = 'Thank you for helping me again, [PLAYERNAME]! Don\'t worry if it takes a while to find them, I know they aren\'t easy to find. Come back when you have the seeds.',
+        m2noitem = 'You don\'t have all the seeds I need, come back when you have them.',
+        m2completed = 'Thanks for the seeds, I\'ll start the experiments. As a reward here are some more potions for you.',
+
+    },
+    ["pt"] = {
+        greeting = "Eu sou Renjiro. Sou responsável pelo {hospital} de Konoha e {vendo} medicamentos, do que você precisa?",
+        noRep = "Desculpe, mas não tenho nenhuma tarefa para você no momento.",
+                        
+        talkHospital = 'Aqui no hospital de Konoha os {ninjas} médicos tratamos os moradores da vila',
+        help1 = 'Eu não o conheço muito bem, mas estou precisando de algumas flores para a criação de remédios. Se você me ajudar, posso te oferecer melhores produtos. Você {aceita} me ajudar?',
+        m1 = 'Certo, vou te dar uma change, eu preciso de 10 flores de Actires, 10 flores de Asleep e 10 flores de Sunny. Fale comigo novamente quando tiver as flores.',
+        m1noitem = 'Você não tem todas as flores que eu preciso, volte quando tiver elas.',
+        m1completed = 'Obrigado pelas flores, aqui estão algumas poções para você.',
+
+        start2 = 'Ah, você voltou |PLAYERNAME|! Poderia me ajudar com mais uma {coisa}?',
+        help2 = 'Encontrei um pergaminho que falava a respeito do poder medicinal das {sementes} de Actires, Asleep e Sunny na produção de poções. Preciso de 10 de cada uma dessas sementes, você poderia me ajudar?',
+        m2 = 'Obrigado por me ajudar novamente, |PLAYERNAME|!. Não se preocupe se demorar para achá-las, eu sei que não são faceis de encontrar. Volte quando tiver as sementes.',
+        m2noitem = 'Você não tem todas as sementes que eu preciso, volte quando tiver elas.',
+        m2completed = 'Obrigado pelas sementes, vou iniciar os experimentos. Como recompensa aqui está mais algumas poções para você.',   
+        
+        start3 = 'Olá |PLAYERNAME|, tudo bem? Novamente obrigada pelas sementes, elas me ajudaram muito e os remédios se tornaram muito mais eficazes'
+    }
+}
+
+local validWords = {
+    ["pt"] = {"ajudar", "hospital", "ninjas", "aceita", "sim", "coisa", "sementes"},
+    ["en"] = {"help", "hospital", "ninjas", "accept", "yes", "thing", "seeds"}
+}
+
+local function dialogOfNpc(cid, player, currentLang, npcText, topic, reputationStorageValue, questStorageValue, releasedFocus, effect)
+    npcHandler:say(messages[currentLang][npcText], cid)
+    npcHandler.topic[cid] = topic
+
+    if reputationStorageValue ~= nil then
+        player:setStorageValue(NpcStorageReputation.konoha.renjiro, reputationStorageValue)
+        player:save()   
+    end
+
+
+    if questStorageValue ~= nil then
+        player:setStorageValue(NpcStorageReputation.konoha.renjiroRepQuest, questStorageValue)
+        player:save()      
+    end
+
+    
+    if releasedFocus == true then
+        npcHandler:releaseFocus(cid)      
+    end
+
+    if effect ~= nil then
+        if effect == 483 then
+			local pos = player:getPosition()
+			local effectPos = Position(pos.x + 1, pos.y + 1, pos.z)
+            effectPos:sendMagicEffect(effect)
+            return true
+        end
+        player:getPosition():sendMagicEffect(effect)
+    end
+end
+
+
+function creatureSayCallback(cid, type, msg)
+    if not npcHandler:isFocused(cid) then
+        return false
+    end
+
+    local msgLower = string.lower(msg)
+    local player = Player(cid)
+    local vocationId = player:getVocation():getId()
+    local currentLang = npcHandler.languages[cid] or "pt" -- default language pt
+    npcHandler:addFocus(cid)
+
+    local isValid = false
+    for _, word in ipairs(validWords[currentLang]) do
+        if msgcontains(msgLower, word) then
+            isValid = true
+            break
+        end
+    end
+    if not isValid then
+        return true
+    end
+
+    local konohaRep = player:getStorageValue(PlayerStorageReputation.konoha)
+    local renjiroRep = player:getStorageValue(NpcStorageReputation.konoha.renjiro)
+    local repQuest = player:getStorageValue(NpcStorageReputation.konoha.renjiroRepQuest)
+
+    if konohaRep < 0 then
+        konohaRep = 0
+        player:setStorageValue(PlayerStorageReputation.konoha, 0)
+    end
+
+    if repQuest < 0 then
+        repQuest = 0
+        player:setStorageValue(NpcStorageReputation.konoha.renjiroRepQuest, 0)
+        player:save()
+    end
+
+    if renjiroRep < 0 then
+        player:setStorageValue(NpcStorageReputation.konoha.renjiro,0)
+        player:save()
+    end
+
+    -- Comandos de ajuda
+    if msgcontains(msgLower, "ajudar") or msgcontains(msgLower, "help") then
+
+        if repQuest == 1 and player:getItemCount(2416) >= 10 and player:getItemCount(2417) >= 10 and player:getItemCount(2418) >= 10 then
+            player:removeItem(2416, 10)
+            player:removeItem(2417, 10)
+            player:removeItem(2418, 10)
+            player:addItem(9725, 10) -- Health Potion
+            player:addItem(9728, 10) -- Mana Potion           
+            dialogOfNpc(cid, player, currentLang, "m1completed", 1, 1, 2, true, 483)
+            return true            
+        elseif repQuest == 1 and player:getItemCount(2418) < 10 then
+            dialogOfNpc(cid, player, currentLang, "m1noitem", 1, nil, nil, false, nil)
+            return true
+        end
+
+        if repQuest == 3 and player:getItemCount(2419) >= 10 then
+            player:removeItem(2419, 10)
+            player:addItem(9726, 10) -- Strong Health Potion
+            player:addItem(9729, 10) -- Strong Mana Potion          
+            dialogOfNpc(cid, player, currentLang, "m2completed", 1, 2, 4, true, 483)
+            return true
+        elseif repQuest == 3 and player:getItemCount(2419) < 10 then
+            dialogOfNpc(cid, player, currentLang, "m2noitem", 1, nil, nil, false, nil)
+            return true
+        end
+
+        dialogOfNpc(cid, player, currentLang, "greeting", 0, nil, nil, false, nil)
+        return true
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 1: Collect Flowers
+    if npcHandler.topic[cid] == 0 and msgcontains(msgLower, "hospital") and repQuest == 0 then
+        if renjiroRep == 0 and konohaRep == 0 then
+            dialogOfNpc(cid, player, currentLang, "talkHospital", 1, nil, nil, false, nil)
+        return true
+        else
+            dialogOfNpc(cid, player, currentLang, "noRep", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+
+    if npcHandler.topic[cid] == 1 and msgcontains(msgLower, "ninjas") and repQuest == 0 then
+        dialogOfNpc(cid, player, currentLang, "help1", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "aceita") or msgcontains(msgLower, "accept") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes"))  and repQuest == 0 then
+        dialogOfNpc(cid, player, currentLang, "m1", 3, nil, 1, true, 526)
+        return true        
+    end
+    
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 2: Collect the seeds
+    if npcHandler.topic[cid] == 0 and msgcontains(msgLower, "hospital") and repQuest == 2 then
+        if renjiroRep == 1 and konohaRep >= 1 then
+            dialogOfNpc(cid, player, currentLang, "start2", 1, nil, nil, false, nil)
+        return true
+        else
+            dialogOfNpc(cid, player, currentLang, "noRep", 1, nil, nil, false, nil)
+            return true
+        end        
+    end
+
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "coisa") or msgcontains(msgLower, "thing")) and repQuest == 2 then
+        dialogOfNpc(cid, player, currentLang, "help2", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "sementes") or msgcontains(msgLower, "seeds") or msgcontains(msgLower, "accept") or msgcontains(msgLower, "sim")) and repQuest == 2 then
+        dialogOfNpc(cid, player, currentLang, "m2", 0, 3, nil, 3, true, 526)
+        return true        
+    end
+
+    return true
+end
+
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+npcHandler:addModule(FocusModule:new())

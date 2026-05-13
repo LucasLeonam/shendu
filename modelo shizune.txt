@@ -1,0 +1,480 @@
+local keywordHandler = KeywordHandler:new()
+local npcHandler = NpcHandler:new(keywordHandler)
+NpcSystem.parseParameters(npcHandler)
+
+function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
+function onCreatureDisappear(cid)           npcHandler:onCreatureDisappear(cid)         end
+function onCreatureSay(cid, type, msg)      npcHandler:onCreatureSay(cid, type, msg)    end
+function onThink()                          npcHandler:onThink()                        end
+
+local shopModule = ShopModule:new()
+npcHandler:addModule(shopModule)
+
+keywordHandler:addKeyword({'stuff'}, StdModule.say, {
+    npcHandler = npcHandler,
+    text = 'Just ask me for a {trade} to see my offers.'
+})
+keywordHandler:addAliasKeyword({'wares'})
+keywordHandler:addAliasKeyword({'offer'})
+
+npcHandler:setCallback(CALLBACK_ONTRADEREQUEST, function(cid)
+    local player = Player(cid)
+    if not player then
+        return false
+    end
+
+    local shizuneRep = player:getStorageValue(NpcStorageReputation.konoha.shizune)
+
+
+    if shizuneRep < 0 then
+        player:setStorageValue(NpcStorageReputation.konoha.shizune,0)
+        player:save()
+    end
+
+    -- limpa a shop antes de montar novamente
+    npcHandler.shopItems = {}
+
+
+    -- Reputação 0 ou maior
+    shopModule:addBuyableItem({'health potion', 'small potion'}, 9725, 80, nil, 'Health Potion', shizuneRep)
+
+    -- Reputação 1 ou maior
+    if shizuneRep >= 1 then
+        shopModule:addBuyableItem({'mana potion', 'small mana potion'}, 9728, 100, nil, 'Chakra Potion', shizuneRep)
+    end
+
+    -- Reputação 2 ou maior
+    if shizuneRep >= 2 then
+        shopModule:addBuyableItem({'strong health potion', 'medium potion'}, 9726, 250, nil, 'Strong Health Potion', shizuneRep)
+        shopModule:addBuyableItem({'strong mana potion', 'medium potion'}, 9729, 300, nil, 'Strong Chakra Potion', shizuneRep)
+    end
+
+    -- Reputação 3 ou maior
+    if shizuneRep >= 3 then
+        shopModule:addBuyableItem({'great health potion', 'great potion'}, 9727, 400, nil, 'Great Chakra Potion', shizuneRep)
+        shopModule:addBuyableItem({'great mana potion', 'great mana potion'}, 9730, 450, nil, 'Great Chakra Potion', shizuneRep)
+    end
+
+    -- Reputação 4 ou maior
+    if shizuneRep >= 4 then
+        shopModule:addBuyableItem({'health pill'}, 10464, 550, nil, 'Health Pill', shizuneRep)
+    end
+
+    -- Reputação 5 ou maior
+    if shizuneRep >= 5 then
+        shopModule:addBuyableItem({'chakra pill'}, 10463, 600, nil, 'Chakra Pill', shizuneRep)
+    end
+
+    if shizuneRep >= 6 then
+        shopModule:addBuyableItem({'fish'}, 2333, 900, nil, 'Fish', shizuneRep)
+    end
+
+
+    return true
+end)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+local messages = {
+    ["en"] = {
+        greeting = "I'm Shizune. I'm in charge of Konoha's {hospital} and I {trade} medicine. What do you need?",
+        noRep = "Sorry, but I don't have any task for you at the moment.",
+            
+        talkHospital = 'Here at Konoha\'s hospital, we medical {ninjas} treat the villagers of the village.',
+        help1 = 'I don\'t know you very well, but I\'m in need of some flowers for the creation of medicines. If you help me, I can offer you better products. Do you {accept} to help me?',
+        m1 = 'Alright, I\'ll give you a change, I need 10 Actires flowers, 10 Asleep flowers and 10 Sunny flowers. Talk to me again when you have the flowers.',
+        m1noitem = 'You don\'t have all the flowers I need, come back when you have them.',
+        m1completed = 'Thanks for the flowers, here are some potions for you.',
+
+        start2 = 'Ah, you\'re back |PLAYERNAME|. Could you help me with one more {thing}?',
+        help2 = 'I found a scroll that talked about the medicinal power of Actires, Asleep and Sunny {seeds} in the production of potions. I need 10 of each of these seeds, could you help me?',
+        m2 = 'Thank you for helping me again, |PLAYERNAME| ! Don\'t worry if it takes a while to find them, I know they aren\'t easy to find. Come back when you have the seeds.',
+        m2noitem = 'You don\'t have all the seeds I need, come back when you have them.',
+        m2completed = 'Thanks for the seeds, I\'ll start the experiments. As a reward here are some more potions for you.',
+
+        start3 = 'Hello |PLAYERNAME|, how are you? Again thanks for the seeds, they helped me a lot and the medicines became much more {effective}.',
+        help3 = 'On the other hand, the effectiveness of the medicines was so good that the village started selling them to the other villages, and now I\'m with a very big {demand}, could you help me collect more flowers so I can produce more medicines?',
+        m3 = 'Wow |PLAYERNAME|, thank you so much, I\'ll need a bit of everything. I need 100 Actires flowers, 100 Asleep flowers, 100 Sunny flowers and 30 seeds of each of these flowers.',
+        m3noitem = 'You don\'t have all the flowers and seeds I need, come back when you have them.',
+        m3completed = 'Thank you so much for the flowers and seeds, |PLAYERNAME|! You saved me! Here are some potions for you as a reward.',
+
+        start4 = 'Hi |PLAYERNAME|, good to see you, I need you to help me find 2 {specific} flowers.',
+        help4 = 'I read in a book that there are 2 flowers that are used for the creation of {life} pills, they are the Freesia flower and the Hydrangea flower, could you bring me 15 of each?',
+        m4 = 'I\'m very grateful, I heard they grow in arid places, I\'ll be waiting for your return',
+        m4noitem = 'It seems you haven\'t found the flowers yet, but I\'m counting on you',
+        m4completed = 'You found them? I wonder how you managed to find them |PLAYERNAME|! Thank you so much, take these life pills as a reward, now I\'ll produce more of them, see you later',
+
+        start5 = 'Hi |PLAYERNAME|, how are you? I know you\'ve been helping me a lot, but I need something very {important} from you.',
+        help5 = 'There\'s a very old book that talks about the ninja pills knowledge, it teaches the basics of production of {pills} focused on chakra recovery, but I don\'t know where we can find it, could you look for it?',
+        m5 = 'Wow |PLAYERNAME|, thank you so much, this book will be fundamental to create the chakra pills, I\'ll be waiting for you anxiously',
+        m5noitem = 'It seems you haven\'t found the book yet, but I\'m counting on you',
+        m5completed = 'Incredible! With this book I can create the chakra pills, thank you so much! Here, I created a great reward for you',
+
+        start6 = 'Welcome back |PLAYERNAME|, how are you? I know you\'ve been helping me a lot, but I have one {last} request for you.',
+        help6 = 'I need a book that talks about the specific knowledge of the {Akimichi} clan pills',
+        m6 = 'Thank you so much! The knowledge of this book will allow me to create pills with specific improvements for each ninja',
+        m6noitem = 'It seems you haven\'t found the book yet, don\'t give up!',
+        m6completed = 'I\'m speechless |PLAYERNAME|. Getting this book was the pinnacle of knowledge I could acquire! Here, I created some special pills for you with the knowledge of this book',
+
+    },
+    ["pt"] = {
+        greeting = "Eu sou Shizune. Sou responsável pelo {hospital} de Konoha e {vendo} medicamentos, do que você precisa?",
+        noRep = "Desculpe, mas não tenho nenhuma tarefa para você no momento.",
+                        
+        talkHospital = 'Aqui no hospital de Konoha os {ninjas} médicos tratamos os moradores da vila',
+        help1 = 'Eu não o conheço muito bem, mas estou precisando de algumas flores para a criação de remédios. Se você me ajudar, posso te oferecer melhores produtos. Você {aceita} me ajudar?',
+        m1 = 'Certo, vou te dar uma change, eu preciso de 10 flores de Actires, 10 flores de Asleep e 10 flores de Sunny. Fale comigo novamente quando tiver as flores.',
+        m1noitem = 'Você não tem todas as flores que eu preciso, volte quando tiver elas.',
+        m1completed = 'Obrigado pelas flores, aqui estão algumas poções para você.',
+
+        start2 = 'Ah, você voltou |PLAYERNAME|. Poderia me ajudar com mais uma {coisa}?',
+        help2 = 'Encontrei um pergaminho que falava a respeito do poder medicinal das {sementes} de Actires, Asleep e Sunny na produção de poções. Preciso de 10 de cada uma dessas sementes, você poderia me ajudar?',
+        m2 = 'Obrigado por me ajudar novamente, |PLAYERNAME|. Não se preocupe se demorar para achá-las, eu sei que não são faceis de encontrar. Volte quando tiver as sementes.',
+        m2noitem = 'Você não tem todas as sementes que eu preciso, volte quando tiver elas.',
+        m2completed = 'Obrigado pelas sementes, vou iniciar os experimentos. Como recompensa aqui está mais algumas poções para você.',   
+        
+        start3 = 'Olá |PLAYERNAME|, tudo bem? Novamente obrigada pelas sementes, elas me ajudaram muito e os remédios se tornaram muito mais {eficazes}',
+        help3 = 'Por outro lado, a eficácia dos remédios foi tão boa que a aldeia começou a vender eles para as outras vilas, e agora estou com uma {demanda} muito grande, você poderia me ajudar a coletar mais flores para eu conseguir produzir mais remédios?',
+        m3 = 'Nossa |PLAYERNAME|, muito obrigado, eu vou precisar de tudo um pouco. Eu preciso de 100 flores de Actires, 100 flores de Asleep, 100 flores de Sunny e 30 sementes de cada uma dessas flores.',
+        m3noitem = 'Você não tem todas as flores e sementes que eu preciso, volte quando tiver elas.',
+        m3completed = 'Muito obrigado pelas flores e sementes, |PLAYERNAME|! Você me salvou! Aqui estão algumas poções para você como recompensa.',
+
+        start4 = 'Oi |PLAYERNAME|, que bom que você veio, preciso que você me ajude a encontrar 2 flores {especificas}',
+        help4 = 'Eu li em um livro que existe 2 flores que são utilizadas para a criação das pílulas de {vida}, são ás a Freesia flower e a Hydrangea flower, você poderia me trazer 15 de cada?',
+        m4 = 'Fico muito agradecida, ouvi dizer que elas nascem em locais áridos, estarei esperando seu retorno',
+        m4noitem = 'Parece que você ainda não encontrou as flores, mas estou contando com você',
+        m4completed = 'você acho? Me pergunto como você conseguiu |PLAYERNAME|! Muito obrigado, tome essas pílulas de vida como recompensa, agora vou produzir mais delas, até mais',
+
+        start5 = 'Oi |PLAYERNAME|, como você está? Sei que você está me ajudando muito, mas preciso de algo muito {importante} de você.',
+        help5 = 'Existe um livro muito antigo que fala a respeito das pílulas ninjas, ele ensina a base de produção das {pílulas} voltadas para recuperação de chakra, mas eu não sei onde podemos encontrá-lo, você poderia procurar por ele?',
+        m5 = 'Nossa |PLAYERNAME|, muito obrigado, esse livro será fundamental para criar as pílulas de chakra, estarei aguardando você ansiosamente',
+        m5noitem = 'Parece que você ainda não encontrou o livro, mas estou contando com você',
+        m5completed = 'Incrível! Com esse livro vou conseguir criar as pílula de chakra, muito obrigado! Aqui está uma grande recompensa para você',
+
+        start6 = 'Bem vindo novamente |PLAYERNAME|, como você está? Eu sei que você tem me ajudado muito, mas eu tenho um {último} pedido para você.',
+        help6 = 'Eu preciso de um livro que fala dos conhecimentos específicos das pílulas do clan {Akimichi}',
+        m6 = 'Muito obrigado! Os conhecimentos desse livro me permitirá criar pílulas com melhorias específicas para cada ninja',
+        m6noitem = 'Parece que você ainda não encontrou o livro, não desista!',
+        m6completed = 'Estou sem palavras |PLAYERNAME|. Conseguir esse livro foi o ápice do conhecimento que poderia adquirir! Aqui, criei algumas pílulas especiais para você com o conhecimento desse livro',
+    },
+}
+
+local validWords = {
+    ["pt"] = {"ajudar", "hospital", "ninjas", "aceita", "sim", "coisa", "sementes", "eficazes", "demanda","especificas", "vida", "importante", "pílulas", "último", "Akimichi"},
+    ["en"] = {"help", "hospital", "ninjas", "accept", "yes", "thing", "seeds", "effective", "demand", "specific", "life", "important", "pills", "last", "Akimichi"},
+}
+
+local function dialogOfNpc(cid, player, currentLang, npcText, topic, reputationStorageValue, questStorageValue, releasedFocus, effect)
+    npcHandler:say(messages[currentLang][npcText], cid)
+    npcHandler.topic[cid] = topic
+
+    if reputationStorageValue ~= nil then
+        player:setStorageValue(NpcStorageReputation.konoha.shizune, reputationStorageValue)
+        player:save()
+    end
+
+    if questStorageValue ~= nil then
+        player:setStorageValue(NpcStorageReputation.konoha.shizuneRepQuest, questStorageValue)
+
+        local questlineStorages = {
+            NpcStorageReputation.konoha.shizuneRepQuestline1,
+            NpcStorageReputation.konoha.shizuneRepQuestline2,
+            NpcStorageReputation.konoha.shizuneRepQuestline3,
+            NpcStorageReputation.konoha.shizuneRepQuestline4,
+            NpcStorageReputation.konoha.shizuneRepQuestline5,
+            NpcStorageReputation.konoha.shizuneRepQuestline6,
+        }
+
+        local questlineIndex = math.ceil(questStorageValue / 2)
+        local questlineValue = questStorageValue % 2
+
+        if questlineValue == 0 then
+            questlineValue = 2
+        end
+
+        local questlineStorage = questlineStorages[questlineIndex]
+
+        if questlineStorage ~= nil then
+            player:setStorageValue(questlineStorage, questlineValue)
+        end
+
+        player:save()
+    end
+
+    if releasedFocus == true then
+        npcHandler:releaseFocus(cid)
+    end
+
+    if effect ~= nil then
+        if effect == 483 then
+            local pos = player:getPosition()
+            local effectPos = Position(pos.x + 1, pos.y + 1, pos.z)
+            effectPos:sendMagicEffect(effect)
+            return true
+        end
+
+        player:getPosition():sendMagicEffect(effect)
+    end
+end
+
+
+function creatureSayCallback(cid, type, msg)
+    if not npcHandler:isFocused(cid) then
+        return false
+    end
+
+    local msgLower = string.lower(msg)
+    local player = Player(cid)
+    local vocationId = player:getVocation():getId()
+    local currentLang = npcHandler.languages[cid] or "pt" -- default language pt
+    npcHandler:addFocus(cid)
+
+    local isValid = false
+    for _, word in ipairs(validWords[currentLang]) do
+        if msgcontains(msgLower, word) then
+            isValid = true
+            break
+        end
+    end
+    if not isValid then
+        return true
+    end
+
+    local konohaRep = player:getStorageValue(PlayerStorageReputation.konoha)
+    local shizuneRep = player:getStorageValue(NpcStorageReputation.konoha.shizune)
+    local repQuest = player:getStorageValue(NpcStorageReputation.konoha.shizuneRepQuest)
+
+    if konohaRep < 0 then
+        konohaRep = 0
+        player:setStorageValue(PlayerStorageReputation.konoha, 0)
+    end
+
+    if repQuest < 0 then
+        repQuest = 0
+        player:setStorageValue(NpcStorageReputation.konoha.shizuneRepQuest, 0)
+        player:save()
+    end
+
+    if shizuneRep < 0 then
+        shizuneRep = 0
+        player:setStorageValue(NpcStorageReputation.konoha.shizune,0)
+        player:save()
+    end
+
+    -- Comandos de ajuda
+    if msgcontains(msgLower, "ajudar") or msgcontains(msgLower, "help") then
+        -- Mission 1
+        if repQuest == 1 then
+            if player:getItemCount(2416) >= 10 and player:getItemCount(2417) >= 10 and player:getItemCount(2418) >= 10 then            
+            player:removeItem(2416, 10)
+            player:removeItem(2417, 10)
+            player:removeItem(2418, 10)
+            player:addItem(9725, 10) -- Health Potion
+            player:addItem(9728, 10) -- Mana Potion           
+            dialogOfNpc(cid, player, currentLang, "m1completed", 1, 1, 2, true, 483)
+            return true            
+        else 
+            dialogOfNpc(cid, player, currentLang, "m1noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+        -- Mission 2
+        if repQuest == 3 then
+            if player:getItemCount(2398) >= 10 and player:getItemCount(2399) >= 10 and player:getItemCount(2400) >= 10 then
+            player:removeItem(2398, 10)
+            player:removeItem(2399, 10)
+            player:removeItem(2400, 10)
+            player:addItem(9726, 25) -- Strong Health Potion
+            player:addItem(9729, 25) -- Strong Mana Potion          
+            dialogOfNpc(cid, player, currentLang, "m2completed", 1, 2, 4, true, 483)
+            return true
+        else 
+            dialogOfNpc(cid, player, currentLang, "m2noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+        -- Mission 3
+        if repQuest == 5 then
+            if player:getItemCount(2416) >= 100 and player:getItemCount(2417) >= 100 and player:getItemCount(2418) >= 100 
+        and player:getItemCount(2398) >= 30 and player:getItemCount(2399) >= 30 and player:getItemCount(2400) >= 30 then
+            player:removeItem(2416, 100)
+            player:removeItem(2417, 100)
+            player:removeItem(2418, 100)
+            player:removeItem(2398, 30)
+            player:removeItem(2399, 30)
+            player:removeItem(2400, 30)
+            player:addItem(9727, 40) -- Great Health Potion
+            player:addItem(9730, 40) -- Great Mana Potion          
+            dialogOfNpc(cid, player, currentLang, "m3completed", 1, 3, 6, true, 483)
+            return true
+        else 
+            dialogOfNpc(cid, player, currentLang, "m3noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+        -- Mission 4
+        if repQuest == 7 then
+            if player:getItemCount(2125) >= 15 and player:getItemCount(2420) >= 15 then
+            player:removeItem(2419, 15)
+            player:removeItem(2420, 15)
+            player:addItem(10464, 30) -- Health Pill          
+            dialogOfNpc(cid, player, currentLang, "m4completed", 1, 4, 8, true, 483)
+            return true
+        else 
+            dialogOfNpc(cid, player, currentLang, "m4noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+        -- Mission 5
+        if repQuest == 9 then
+             if player:getItemCount(2125) >= 1 then
+            -- player:getItemCount(xxxx) >= 1  then
+            -- player:removeItem(xxxx, 1)
+            player:removeItem(2125, 1)
+            player:addItem(10463, 50) -- Chakra Pill
+            dialogOfNpc(cid, player, currentLang, "m5completed", 1, 5, 10, true, 483)
+            return true
+        else 
+            dialogOfNpc(cid, player, currentLang, "m5noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+        -- Mission 6
+        if repQuest == 11 then
+            if player:getItemCount(2125) >= 1 then
+            -- player:getItemCount(xxxx) >= 1  then
+            -- player:removeItem(xxxx, 1)
+            player:removeItem(2125, 1)
+            -- player:addItem(xxxx, 10) -- Speed Pill  
+            -- player:addItem(xxxx, 5) -- Stamina Pill  
+            -- player:addItem(xxxx, 5) -- Taijutsu Pill  
+            -- player:addItem(xxxx, 5) -- Ninjutsu Pill        
+            -- player:addItem(xxxx, 5) -- Shurikenjutsu Pill  
+            dialogOfNpc(cid, player, currentLang, "m6completed", 1, 6, 12, true, 483)
+            return true
+        else 
+            dialogOfNpc(cid, player, currentLang, "m6noitem", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+
+        dialogOfNpc(cid, player, currentLang, "greeting", 0, nil, nil, false, nil)
+        return true
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission - First Call
+    if npcHandler.topic[cid] == 0 and msgcontains(msgLower, "hospital") then
+        -- Mission 1
+        if shizuneRep == 0 and konohaRep == 0 and repQuest == 0 then
+            dialogOfNpc(cid, player, currentLang, "talkHospital", 1, nil, nil, false, nil)
+        return true
+        -- Mission 2
+        elseif  shizuneRep == 1 and konohaRep == 1 and repQuest == 2 then
+            dialogOfNpc(cid, player, currentLang, "start2", 1, nil, nil, false, nil)
+        return true
+        -- Mission 3
+        elseif  shizuneRep == 2 and konohaRep == 2 and repQuest == 4 then
+            dialogOfNpc(cid, player, currentLang, "start3", 1, nil, nil, false, nil)
+        return true
+        -- Mission 4
+        elseif  shizuneRep == 3 and konohaRep == 3 and repQuest == 6 then
+            dialogOfNpc(cid, player, currentLang, "start4", 1, nil, nil, false, nil)
+        return true
+        -- Mission 5
+        elseif  shizuneRep == 4 and konohaRep == 4 and repQuest == 8 then
+            dialogOfNpc(cid, player, currentLang, "start5", 1, nil, nil, false, nil)
+        return true
+        -- Mission 6
+        elseif  shizuneRep == 5 and konohaRep == 5 and repQuest == 10 then
+            dialogOfNpc(cid, player, currentLang, "start6", 1, nil, nil, false, nil)
+        return true
+        else
+            dialogOfNpc(cid, player, currentLang, "noRep", 1, nil, nil, false, nil)
+            return true
+        end
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 1: Collect Flowers
+
+    if npcHandler.topic[cid] == 1 and msgcontains(msgLower, "ninjas") and repQuest == 0 then
+        dialogOfNpc(cid, player, currentLang, "help1", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "aceita") or msgcontains(msgLower, "accept") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes"))  and repQuest == 0 then
+        dialogOfNpc(cid, player, currentLang, "m1", 3, nil, 1, true, 526)
+        return true        
+    end
+    
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 2: Collect the seeds
+
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "coisa") or msgcontains(msgLower, "thing")) and repQuest == 2 then
+        dialogOfNpc(cid, player, currentLang, "help2", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "sementes") or msgcontains(msgLower, "seeds") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and repQuest == 2 then
+        dialogOfNpc(cid, player, currentLang, "m2", 3, nil, 3, true, 526)
+        return true        
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 3: High Demand
+
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "eficazes") or msgcontains(msgLower, "effective")) and repQuest == 4 then
+        dialogOfNpc(cid, player, currentLang, "help3", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "demanda") or msgcontains(msgLower, "demand") or msgcontains(msgLower, "accept") or msgcontains(msgLower, "sim")) and repQuest == 4 then
+        dialogOfNpc(cid, player, currentLang, "m3", 0, nil, 5, true, 526)
+        return true        
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 4: Creating health pills using flowers
+
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "especificas") or msgcontains(msgLower, "specific")) and repQuest == 6 then
+        dialogOfNpc(cid, player, currentLang, "help4", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "vida") or msgcontains(msgLower, "life") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and repQuest == 6 then
+        dialogOfNpc(cid, player, currentLang, "m4", 0, nil, 7, true, 526)
+        return true        
+    end
+
+
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 5: Knowledge of Pills
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "importante") or msgcontains(msgLower, "important")) and repQuest == 8 then
+        dialogOfNpc(cid, player, currentLang, "help5", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "pílulas") or msgcontains(msgLower, "pills") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and repQuest == 8 then
+        dialogOfNpc(cid, player, currentLang, "m5", 0, nil, 9, true, 526)
+        return true        
+    end
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    -- Reputation Mission 6: Akimichi Clan and you Knowledge of Powerful Pills
+    if npcHandler.topic[cid] == 1 and (msgcontains(msgLower, "último") or msgcontains(msgLower, "last")) and repQuest == 10 then
+        dialogOfNpc(cid, player, currentLang, "help6", 2, nil, nil, false, nil)
+        return true
+    end
+
+    if npcHandler.topic[cid] == 2 and (msgcontains(msgLower, "Akimichi") or msgcontains(msgLower, "sim") or msgcontains(msgLower, "yes")) and repQuest == 10 then
+        dialogOfNpc(cid, player, currentLang, "m6", 0, nil, 11, true, 526)
+        return true        
+    end
+
+    return true
+end
+
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+npcHandler:addModule(FocusModule:new())
